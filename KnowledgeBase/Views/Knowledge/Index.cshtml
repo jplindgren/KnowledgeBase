@@ -1,0 +1,32 @@
+﻿@model IEnumerable<KnowledgeBase.Data.Knowledge>
+
+@{
+    ViewBag.Title = "Knowledge";
+}
+
+
+<!-- Example row of columns -->
+@foreach (var item in Model) {
+    <div class="knowledge" style="margin-top:10px">
+        <h2 class="text-center">
+            <a href="#" role="button" class="openAllLinks">@item.Tag.Name &raquo;</a>
+        </h2> 
+        
+    
+        <div class="row">
+            @foreach (var article in item.Articles) { 
+                <div class="col-md-4 article well">
+                    <h3>@article.Name</h3>
+                    <small>@article.Description</small>
+                    <p><a target="_blank" class="btn btn-default" href="@article.Link" role="button">Open &raquo;</a></p>
+                </div>
+            }
+        </div>
+    </div>
+}
+
+<hr>
+
+<footer>
+    <p>&copy; Company 2015</p>
+</footer>

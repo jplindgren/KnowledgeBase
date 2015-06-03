@@ -1,0 +1,58 @@
+﻿[
+  {
+    "Tag": {
+      "Name": "Dapper"
+    },
+    "Articles": [
+      {
+        "Name": "Dapper Docs",
+        "Description": "Readme do papper github repo",
+        "Link": "https://github.com/StackExchange/dapper-dot-net/blob/master/Readme.md"
+      },
+      {
+        "Name": "Dapper Contrib Docs",
+        "Description": "Radme do dapper contrib github repo",
+        "Link": "https://github.com/StackExchange/dapper-dot-net/blob/master/Dapper.Contrib/Readme.md"
+      },
+      {
+        "Name": "Dapper.Net by example",
+        "Description": "Exemplos legais de como usar o dapper",
+        "Link": "https://www.tritac.com/bp-24-dapper-net-by-example"
+      },
+      {
+        "Name": "Dapper.Net Tutorial Series",
+        "Description": "Série em 3 posts com um bom tutorial sobre Dapper. - Post 1 contém uma boa intrudução sobre instalação e recursos. -Post 2 Fala sobre o Dapper.Contrib. Post 3 - Fala sobre Dapper.Rainbow",
+        "Link": "https://liangwu.wordpress.com/category/dapper-net/"
+      }
+    ]
+  },
+  {
+    "Tag": {
+      "Name": "EntityFramework.Extended"
+    },
+    "Articles": [
+      {
+        "Name": "EntityFramework.Extended Docs",
+        "Description": "Readme do EntityFramework.Extended no GitHub. Queries em batch, future queries, audit trails e cache results",
+        "Link": "https://github.com/loresoft/EntityFramework.Extended/blob/master/readme.md"
+      }
+    ]
+  },
+  {
+    "Tag": {
+      "Name": "Elixir"
+    },
+    "Articles": [
+      {
+        "Name": "Learn elixir in five minutos",
+        "Description": "Little elixir cheatsheet",
+        "Link": "http://learnxinyminutes.com/docs/elixir/"
+      },
+      {
+        "Name": "Primeiros passos com elixir + pheonix",
+        "Description": "Tutorial sobre elixir + pheonix pelo akita on rails em português",
+        "Link": "http://www.akitaonrails.com/2015/06/02/primeiros-passos-elixir-1-0-phoenix-framework-0-13"
+      }
+    ]
+  }
+]

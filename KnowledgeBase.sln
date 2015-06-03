@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeBase", "KnowledgeBase\KnowledgeBase.csproj", "{24F95BA4-DC0F-4581-9CC2-BACBC130719E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeBase.Data", "KnowledgeBase.Data\KnowledgeBase.Data.csproj", "{4530CF7B-7B4A-456D-81BC-96F6C2D7AA08}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{24F95BA4-DC0F-4581-9CC2-BACBC130719E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24F95BA4-DC0F-4581-9CC2-BACBC130719E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24F95BA4-DC0F-4581-9CC2-BACBC130719E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24F95BA4-DC0F-4581-9CC2-BACBC130719E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4530CF7B-7B4A-456D-81BC-96F6C2D7AA08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4530CF7B-7B4A-456D-81BC-96F6C2D7AA08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4530CF7B-7B4A-456D-81BC-96F6C2D7AA08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4530CF7B-7B4A-456D-81BC-96F6C2D7AA08}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
