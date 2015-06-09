@@ -3,6 +3,39 @@
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+#top-link-block.affix-top {
+    position: absolute; /* allows it to "slide" up into view */
+    bottom: -82px;
+    left: 10px;
+}
+#top-link-block.affix {
+    position: fixed; /* keeps it on the bottom once in view */
+    bottom: 18px;
+    left: 10px;
+}
+
+.knowledge {
+    margin-top:10px;
+    border: 1px solid #DDD;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.article {
+    -webkit-transition: border 0.4s;
+    transition: border 0.4s; 
+}
+
+.article:hover {
+    border: 1px solid #DDD;
+    -webkit-box-shadow: 2px 5px 1px 1px #ccc;
+    -moz-box-shadow: 2px 5px 1px 1px #ccc;
+    box-shadow: 2px 1px 5px 1px #ccc;
+}
+
+.pill-item {
+    padding: 5px;
+}
 
 
 

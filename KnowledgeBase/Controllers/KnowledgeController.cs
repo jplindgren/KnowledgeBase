@@ -1,5 +1,6 @@
 ﻿using KnowledgeBase.Data;
 using KnowledgeBase.Data.Repository;
+using KnowledgeBase.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -21,13 +22,19 @@ namespace KnowledgeBase.Controllers{
         // GET: /Knowledge/
         public ActionResult Index(){
             IList<Knowledge> results = repository.Load();
-            return View(results);
+            var knowledgeListViewModel = new KnowledgeListViewModel() {
+                Knowledges = results,
+                Tags = results.Select(x => x.Tag.Name).ToList()
+            };
+            return View(knowledgeListViewModel);
         }
 
         //
         // POST: /Knowledge/
         [HttpPost]
         public void AddArticle(AddArticleEvtArgs args) {
+            if (args == null || !args.IsValid())
+                throw new Exception("Invalid arguments");
             IList<Knowledge> knowledgeBase = repository.Load();
             var existentKnowledge = knowledgeBase.Where(x => x.Tag.Name == args.Tag).FirstOrDefault();
             if (existentKnowledge == null) {
@@ -64,5 +71,9 @@ namespace KnowledgeBase.Controllers{
         public string Name { get; set; }
         public string Link { get; set; }
         public string Description { get; set; }
+
+        public bool IsValid() { 
+            return !string.IsNullOrEmpty(Tag) && !string.IsNullOrEmpty(Name) && !string.IsNullOrEmpty(Link);
+        }
     } //class AddArticleEvtArgs 
 }

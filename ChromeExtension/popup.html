@@ -6,11 +6,41 @@
  -->
 <html>
   <head>
+    <meta name="description" content="test">
     <title>Knowledge Base Extension's Popup</title>
     <style>
       body {
         font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
         font-size: 100%;
+        width: 400px;
+        height: 200px;
+        vertical-align:middle;
+      }
+      .control {
+        padding: 5px 5px 5px 5px;
+        margin: 5px;
+        width: 92%;
+        
+      }
+      .box{
+        -webkit-box-shadow: 1px 1px 1px 1px #ccc;
+        -moz-box-shadow: 1px 1px 1px 1px #ccc;
+        box-shadow: 1px 1px 1px 1px #ccc;
+
+        background: white;
+        border: 1px solid #DDD;
+        border-radius: 5px;
+
+        color: #666;
+        float: left;
+        padding: 5px 10px;
+        outline: none;
+        box-shadow:3px 3px 3px #96A1BD;
+      }
+      .content{
+        text-overflow: ellipsis;
+        overflow: hidden;
+        max-width: 400px;
       }
       #status {
         /* avoid an excessively wide status text */
@@ -19,6 +49,45 @@
         overflow: hidden;
         max-width: 400px;
       }
+
+      .btn, .btn:link, .btn:visited {
+        color: #111;
+        display: inline-block;
+        font-family: avenir, helvetica, arial, sans-serif;
+        letter-spacing: 0.15em;
+        text-decoration: none;
+        text-transform: uppercase;
+
+        -webkit-transition: color 0.4s, background-color 0.4s, border 0.4s;
+        transition: color 0.4s, background-color 0.4s, border 0.4s; 
+
+        -webkit-box-shadow: 1px 1px 1px 1px #ccc;
+        -moz-box-shadow: 1px 1px 1px 1px #ccc;
+        box-shadow: 1px 1px 1px 1px #ccc;
+
+        background: white;
+        border: 1px solid #DDD;
+        border-radius: 5px;
+
+        color: #666;
+        padding: 5px 10px;
+        outline: none;
+        height:25px;
+      }
+
+      .btn:hover, .btn:focus {
+        color: #7FDBFF;
+        border: 1px solid #7FDBFF;
+        -webkit-transition: background-color 0.3s, color 0.3s, border 0.3s;
+        transition: background-color 0.3s, color 0.3s, border 0.3s; }
+
+      .btn:active {
+        color: #0074D9;
+        border: 1px solid #0074D9;
+        -webkit-transition: background-color 0.3s, color 0.3s, border 0.3s;
+        transition: background-color 0.3s, color 0.3s, border 0.3s; 
+      }
+
     </style>
 
     <!--
@@ -30,16 +99,14 @@
     <script src="popup.js"></script>
   </head>
   <body>
-    <h2>Save a Knowledge</h2>
+    <h2 class="control"><a href="http://localhost:62431/">Knowledge base</a></h2>
     <div id="status" style="width: 100%"></div>
-    
-      <input type="text" id="tag" required placeholder="Choose a tag...">
-      <input type="text" id="name" placeholder="Choose a name...">
-      <textarea id="description" placeholder="Choose a description..."></textarea>
-      <label id="link"></label>
-      <button id="save">Save!</button>
-    
-    <img id="image-result" hidden>
+    <div class="content">
+      <input class="control box" type="text" id="name" placeholder="Choose a name..."><br/>
+      <input class="control box" type="text" id="tag" required placeholder="Choose a tag..."><br/>
+      <textarea class="control box" rows="3" id="description" placeholder="Choose a description..."></textarea><br/>
+      <button class="control btn" id="save">Save!</button>
+    </div>      
   </body>
 </html>
 

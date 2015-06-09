@@ -2,6 +2,14 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+var code = 'var meta = document.querySelector("meta[name=\'description\']");' + 
+           'if (meta) meta = meta.getAttribute("content");' +
+           '({' +
+           '    title: document.title,' +
+           '    description: meta || ""' +
+           '});';
+
+
 /**
  * Get the current URL.
  *
@@ -64,7 +72,7 @@ function sendArticle(knowledge, callback, errorCallback){
     x.onload = function() {
         // Parse and process the response from Google Image Search.
         var response = x.response;        
-        callback('sucesso!!');
+        callback('Saved!');
     };
     x.onerror = function(e) {
         errorCallback(e);
@@ -76,34 +84,48 @@ function renderStatus(statusText) {
   document.getElementById('status').textContent = statusText;
 }
 
+//parece nao funcionar nesse tipo de script, talvez um content script?
+function getMetaContentByName(name,content){
+    var content = (content == null) ? 'content' : content;
+    return document.querySelector("meta[name='" + name + "']").getAttribute(content);
+}
+
+function fillDescriptionFromPage(){
+    // to get meta we have to access through a content script?
+    chrome.tabs.executeScript({
+        code: code
+    }, function(results) {
+        if (!results) {
+            document.getElementById('description').value = "";
+        }
+        var result = results[0];
+        document.getElementById('description').value = result.description;
+    });
+}
+
 function submit(e){
     e.preventDefault();
-    getCurrentTab(function(url, tab) {
-        //var test = tab.getElementByTagName('H1')[0];
-        
-        /*
+    getCurrentTab(function(url, tab) {        
         var tag = document.getElementById('tag').value;
         var description = document.getElementById('description').value;
-        var name = document.getElementById('name').value;
-        renderStatus('URL: ' + url + '\n Tag: ' + tag + '\nName: ' + name + '\ndescription: ' + description);
+        var name = tab.title;
         
         sendArticle( { tag: tag, name: name, description: description, link: url }, 
             function(successMessage) {
                 renderStatus(successMessage);
+                chrome.tabs.highlight({ tabs: [tab.windowId] });
             },
             function(errorMessage) {
                 renderStatus(errorMessage);
             }
         );
-           */ 
     });    
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    getCurrentTab(function(url, tab) {
-        renderStatus(tab.title);
+    getCurrentTab(function(url, tab) {        
         document.getElementById('name').value = tab.title;
+        fillDescriptionFromPage();
+        document.getElementById('save').addEventListener('click', submit);
     });
-    
-    document.getElementById('save').addEventListener('click', submit);
 });

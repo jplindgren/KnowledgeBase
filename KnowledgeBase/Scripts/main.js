@@ -33,4 +33,17 @@ $(function () {
             */
         }
     });
+
+
+    $(".navbar-fixed-top").autoHidingNavbar();
+    var root = $('html,body');
+    //$('a[href*=#]:not([href=#])').on('click', function (event) {
+    //    event.preventDefault();
+    //    root.animate({ scrollTop: $('[name="' + $.attr(this, 'href').substr(1) + '"]').offset().top - 40 }, 600);
+    //});
+
+    $('.pill-link').on('click', function (event) {
+        event.preventDefault();
+        root.animate({ scrollTop: $('[name="' + $.attr(this, 'href').substr(1) + '"]').offset().top - 40 }, 600);
+    });
 });

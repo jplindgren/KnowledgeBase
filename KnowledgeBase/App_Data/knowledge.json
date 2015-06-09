@@ -57,13 +57,38 @@
   },
   {
     "Tag": {
-      "Name": "Chrome"
+      "Name": "Functional Programming"
     },
     "Articles": [
       {
-        "Name": null,
-        "Description": null,
-        "Link": null
+        "Name": "Programação Funcional Em Javascript",
+        "Description": "short",
+        "Link": "http://www.srirangan.net/2011-12-functional-programming-in-javascript"
+      },
+      {
+        "Name": "FSharp For Fun And Profit",
+        "Description": "Um dos maiores recursos de conhecimento de F#, vários tutoriais",
+        "Link": "http://fsharpforfunandprofit.com/"
+      },
+      {
+        "Name": "Capítulo 6 do Livro Eloquent Javascript",
+        "Description": "Bom tutorial da primeira versão do livro (ele já está na versão 2)",
+        "Link": "http://eloquentjavascript.net/1st_edition/chapter6.html"
+      },
+      {
+        "Name": "Don’t Be Scared Of Functional Programming",
+        "Description": "Excelente tutorial sobre programação funcional em javascript",
+        "Link": "http://www.smashingmagazine.com/2014/07/02/dont-be-scared-of-functional-programming/"
+      },
+      {
+        "Name": "Recognizing Higher-Order Functions in C#",
+        "Description": "Tutorial em C# abordando programação funcional",
+        "Link": "http://jeremybytes.blogspot.com.br/2014/06/recognizing-higher-order-function-in-c.html"
+      },
+      {
+        "Name": "Functional programming in C#",
+        "Description": "Tutorial do codeproject sobre programação funcional em C# (longo)",
+        "Link": "http://www.codeproject.com/Articles/375166/Functional-programming-in-Csharp"
       }
     ]
   },
@@ -73,33 +98,9 @@
     },
     "Articles": [
       {
-        "Name": "How Create In 10",
-        "Description": "dadadasad",
-        "Link": null
-      }
-    ]
-  },
-  {
-    "Tag": {
-      "Name": "Chrome Extensions"
-    },
-    "Articles": [
-      {
-        "Name": "Create A Chrome Extensions In 10 Minutes",
-        "Description": "Sitepoint tutorial to create a chrome extension",
-        "Link": "http://www.sitepoint.com/create-chrome-extension-10-minutes-flat/"
-      }
-    ]
-  },
-  {
-    "Tag": {
-      "Name": "a"
-    },
-    "Articles": [
-      {
-        "Name": "a",
-        "Description": "a",
-        "Link": "http://www.w3schools.com/jsref/met_element_getelementsbytagname.asp"
+        "Name": "How to build a Chrome Extension series | Juliana Peña",
+        "Description": "Série de 4 tutoriais sobre como criar uma extensão para o google. Parece bom.",
+        "Link": "http://julip.co/projects/how-to-build-a-chrome-extension-series/"
       }
     ]
   }
