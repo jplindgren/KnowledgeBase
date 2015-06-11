@@ -10,6 +10,7 @@
                                                             .Select(x => x.Select(y => y.Value).ToList())
                                                             .ToList();
 }
+
 @foreach (var tags in tagsGroups) { 
     <ul class="nav nav-pills nav-justified">
         @foreach (var tag in tags) { 
@@ -29,7 +30,7 @@
         <div class="row">
             @foreach (var article in item.Articles) { 
                 <div class="col-md-4">
-                    <div class="article well">
+                    <div data-name="@article.Name" class="article well">
                         <h3>@article.Name</h3>
                         <small>@article.Description</small>
                         <p><a target="_blank" class="btn btn-default" href="@article.Link" role="button">Open &raquo;</a></p>
