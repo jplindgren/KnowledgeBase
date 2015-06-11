@@ -103,5 +103,17 @@
         "Link": "http://julip.co/projects/how-to-build-a-chrome-extension-series/"
       }
     ]
+  },
+  {
+    "Tag": {
+      "Name": "Javascript"
+    },
+    "Articles": [
+      {
+        "Name": "Tips And Tricks - Google Chrome",
+        "Description": "Muito boas dicas sobre como utilizar o DevTool do chrome. Destaque para o console.profile!",
+        "Link": "https://developer.chrome.com/devtools/docs/tips-and-tricks"
+      }
+    ]
   }
 ]
