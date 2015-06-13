@@ -52,12 +52,45 @@
               Knowledge Base</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-            <form class="navbar-form navbar-right" role="form">
+            <form class="navbar-form navbar-left" role="form">
                 <input type="search" class="form-control" placeholder="Search" id="search" >
-                <button type="submit" class="btn btn-success">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                </button>
             </form>
+            <ul class="nav navbar-nav navbar-right" style="margin-top:8px; padding:0px 15px">
+                  <li class="dropdown">
+                     <button type="submit" id="addArticleButton" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                     </button>
+                     <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
+                        <li>
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <form class="form" role="form" accept-charset="UTF-8" id="add-articleForm">
+                                    <div class="form-group">
+                                       <label class="sr-only" for="name">Article Name</label>
+                                       <input type="text" class="form-control" id="name" name="name" placeholder="Article Name" required>
+                                    </div>
+                                    <div class="form-group">
+                                       <label class="sr-only" for="tag">Tag</label>
+                                       <input type="text" list="tags" class="form-control" id="tag" name="tag" placeholder="Tag" required>
+                                    </div>
+                                     <div class="form-group">
+                                       <label class="sr-only" for="link">Link</label>
+                                       <input type="text" class="form-control" id="link" name="link" placeholder="Link" required>
+                                    </div>
+                                     <div class="form-group">
+                                       <label class="sr-only" for="description">Description</label>
+                                       <textarea rows="3" class="form-control" id="description" name="description" placeholder="Description"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                       <button type="submit" class="btn btn-success btn-block">Add</button>
+                                    </div>
+                                 </form>
+                              </div>
+                           </div>
+                        </li>
+                     </ul>
+                  </li>
+               </ul>
         </div><!--/.navbar-collapse -->
       </div>
     </nav>   
@@ -70,7 +103,18 @@
         <script src="~/Scripts/vendor/bootstrap.min.js"></script>
         <script src="~/Scripts/vendor/jquery.bootstrap-autohidingnavbar.js"></script>
         <script src="~/Scripts/main.js"></script>
+        <script src="~/Scripts/app/serializeObject.js"></script>
         @RenderSection("pagescripts", false)
+        <script>
+            // Only enable if the document has a long scroll bar
+            // Note the window height + offset
+            if (($(window).height() + 100) < $(document).height()) {
+                $('#top-link-block').removeClass('hidden').affix({
+                    // how far to scroll down before link "slides" into view
+                    offset: { top: 100 }
+                });
+            }
+        </script>
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <!--
         <script>

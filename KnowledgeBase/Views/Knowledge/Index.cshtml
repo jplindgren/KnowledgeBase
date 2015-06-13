@@ -4,59 +4,20 @@
     ViewBag.Title = "Knowledge";
 }
 
-@{
-    List<List<string>> tagsGroups = Model.Tags.Select((x, i) => new { Index = i, Value = x })
-                                                            .GroupBy(x => x.Index / 5)
-                                                            .Select(x => x.Select(y => y.Value).ToList())
-                                                            .ToList();
-}
+<!-- MasterPage Menu ADD button auto complete  -->
+<datalist id="tags">
+    @foreach(var tag in Model.Tags){
+        <option value="@tag" />    
+    }
+</datalist>
 
-@foreach (var tags in tagsGroups) { 
-    <ul class="nav nav-pills nav-justified">
-        @foreach (var tag in tags) { 
-            <li class="active pill-item"><a class="pill-link" href="#@tag">@tag</a></li>
-          }
-    </ul>
-}
+<div id="origDivKnowledgeList">
+    @{ Html.RenderPartial("_KnowledgeList", Model); }
+</div>
 
-<!-- Example row of columns -->
-@foreach (var item in Model.Knowledges) {
-    <div class="knowledge">
-        <h2 class="text-center">
-            <a href="#" role="button" name="@item.Tag.Name" class="openAllLinks">@item.Tag.Name &raquo;</a>
-        </h2> 
-        
-    
-        <div class="row">
-            @foreach (var article in item.Articles) { 
-                <div class="col-md-4">
-                    <div data-name="@article.Name" class="article well">
-                        <h3>@article.Name</h3>
-                        <small>@article.Description</small>
-                        <p><a target="_blank" class="btn btn-default" href="@article.Link" role="button">Open &raquo;</a></p>
-                        <span class="label label-primary pull-right">@item.Tag.Name</span>
-                    </div>
-                </div>
-            }
-        </div>
-    </div>
-}
-
+<div id="divKnowledgeList"></div>   
 <hr>
 
 <footer>
     <p>&copy; Jplindgren 2015</p>
 </footer>
-
-@section pagescripts{
-    <script>
-        // Only enable if the document has a long scroll bar
-        // Note the window height + offset
-        if ( ($(window).height() + 100) < $(document).height() ) {
-            $('#top-link-block').removeClass('hidden').affix({
-                // how far to scroll down before link "slides" into view
-                offset: {top:100}
-            });
-        }
-    </script>
-    }

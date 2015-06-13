@@ -66,4 +66,27 @@ $(function () {
         event.preventDefault();
         root.animate({ scrollTop: $('[name="' + $.attr(this, 'href').substr(1) + '"]').offset().top - 40 }, 600);
     });
+
+    var addArticleForm = $('#add-articleForm');
+
+    addArticleForm.on('submit', function (evt) {
+        evt.preventDefault();
+        $.ajax({
+            url: "Knowledge/AddArticle",
+            type: 'POST',
+            data: addArticleForm.serialize(),
+            success: function (result) {
+                $("#origDivKnowledgeList").html('');
+                $("#divKnowledgeList").load('Knowledge/GetKnowledgeList');
+                $(addArticleForm)[0].reset();
+                $('#addArticleButton').dropdown('toggle');
+                
+            },
+            error: function () {
+                alert("Bad submit");
+            }
+        });
+    });
+
+    
 });
