@@ -1,8 +1,12 @@
-
-
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
 #top-link-block.affix-top {
     position: absolute; /* allows it to "slide" up into view */
     bottom: -82px;

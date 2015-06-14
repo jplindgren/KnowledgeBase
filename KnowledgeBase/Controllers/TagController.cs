@@ -20,7 +20,10 @@ namespace KnowledgeBase.Controllers{
         // GET: /Tag/
         public JsonResult Index() {
             IList<Knowledge> results = repository.Load();
-            var tags = results.Select(x => x.Tag.Name).ToList();
+            var tags = new List<string>();
+            if (results != null) {
+                tags = results.Select(x => x.Tag.Name).ToList();
+            }
             return Json(tags, JsonRequestBehavior.AllowGet);
         }
 

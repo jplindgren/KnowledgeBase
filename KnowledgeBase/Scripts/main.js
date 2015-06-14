@@ -1,6 +1,9 @@
 $(function () {
     var _ = {};
 
+    toastr.options.closeButton = true;
+    toastr.options.progressBar = true;
+
     _.OpenWindowInNewTab = function(url){
         window.open(url, '_blank', 'toolbar=yes, location=yes, status=yes, menubar=yes, scrollbars=yes');
     }
@@ -80,10 +83,10 @@ $(function () {
                 $("#divKnowledgeList").load('Knowledge/GetKnowledgeList');
                 $(addArticleForm)[0].reset();
                 $('#addArticleButton').dropdown('toggle');
-                
+                toastr.success('Operation Complete', 'Article added with success');
             },
             error: function () {
-                alert("Bad submit");
+                toastr.error('Sorry...', 'An error ocorred. Please retry later.');
             }
         });
     });

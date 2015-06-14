@@ -38,7 +38,10 @@ namespace KnowledgeBase.Controllers{
             if (args == null || !args.IsValid())
                 throw new Exception("Invalid arguments");
             IList<Knowledge> knowledgeBase = repository.Load();
-            var existentKnowledge = knowledgeBase.Where(x => x.Tag.Name == args.Tag).FirstOrDefault();
+            if (knowledgeBase == null)
+                knowledgeBase = new List<Knowledge>();
+
+            var existentKnowledge =  knowledgeBase.Where(x => x.Tag.Name == args.Tag).FirstOrDefault();
             if (existentKnowledge == null) {
                 existentKnowledge = new Knowledge() { Tag = new Tag() { Name = args.Tag } };
                 knowledgeBase.Add(existentKnowledge);
@@ -47,12 +50,38 @@ namespace KnowledgeBase.Controllers{
             repository.Save(knowledgeBase);
         }
 
+        //
+        // POST: /Knowledge/Remove/{name}
+        [HttpGet]
+        public ActionResult Remove(string id) {
+            var name = id;
+            if (string.IsNullOrEmpty(name))
+                throw new Exception("Invalid arguments");
+            IList<Knowledge> knowledgeBase = repository.Load();
+            if (knowledgeBase == null)
+                knowledgeBase = new List<Knowledge>();
+            
+            Knowledge knowledge = knowledgeBase.Where(x => x.ContainsArticle(name)).FirstOrDefault();
+            if (knowledge == null) {
+                throw new Exception("Knowledge not found for article name: " + name);
+            }
+
+            knowledge.RemoveArticle(name);
+            if (knowledge.Articles.Count() == 0) {
+                knowledgeBase.Remove(knowledge);
+            }
+
+            repository.Save(knowledgeBase);
+            return RedirectToAction("Index");
+        }
+
         private KnowledgeListViewModel GetKnowledgeListViewModel() {
             IList<Knowledge> results = repository.Load();
-            var knowledgeListViewModel = new KnowledgeListViewModel() {
-                Knowledges = results,
-                Tags = results.Select(x => x.Tag.Name).ToList()
-            };
+            var knowledgeListViewModel = new KnowledgeListViewModel();
+            if (results != null) {
+                knowledgeListViewModel.Knowledges = results;
+                knowledgeListViewModel.Tags = results.Select(x => x.Tag.Name).ToList();
+            }
             return knowledgeListViewModel;
         }
 

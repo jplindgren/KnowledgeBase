@@ -1,368 +1,100 @@
 ﻿[
   {
     "Tag": {
-      "Name": "Dapper"
+      "Name": "Apartamentos - Ingá"
     },
     "Articles": [
       {
-        "Name": "Dapper Docs",
-        "Description": "Readme do papper github repo",
-        "Link": "https://github.com/StackExchange/dapper-dot-net/blob/master/Readme.md"
+        "Name": "Apartamento para alugar em Inga, Niterói - 85m², R$ 1.300 - ZAP Imóveis",
+        "Description": "Aluguel: 1300\nCondominio: 800",
+        "Link": "http://www.zapimoveis.com.br/oferta/aluguel+apartamento+2-quartos+inga+niteroi+rj+85m2+RS1300/ID-7580415/?paginaoferta=1"
       },
       {
-        "Name": "Dapper Contrib Docs",
-        "Description": "Radme do dapper contrib github repo",
-        "Link": "https://github.com/StackExchange/dapper-dot-net/blob/master/Dapper.Contrib/Readme.md"
+        "Name": "Apartamento para alugar em Inga, Niterói - 54m², R$ 1.500 - ZAP Imóveis",
+        "Description": "Aluguel 1500\nCondominio 580\nBem localizado",
+        "Link": "http://www.zapimoveis.com.br/oferta/aluguel+apartamento+2-quartos+inga+niteroi+rj+54m2+RS1500/ID-7564167/?paginaoferta=3"
       },
       {
-        "Name": "Dapper.Net by example",
-        "Description": "Exemplos legais de como usar o dapper",
-        "Link": "https://www.tritac.com/bp-24-dapper-net-by-example"
+        "Name": "Apartamento para alugar em Inga, Niterói - 100m², R$ 2.500 - ZAP Imóveis",
+        "Description": "Aluguel: 2500\nCondominio 883\nMuito bem localizado, 100m²",
+        "Link": "http://www.zapimoveis.com.br/oferta/aluguel+apartamento+2-quartos+inga+niteroi+rj+100m2+RS2500/ID-5274409/?paginaoferta=4"
+      }
+    ]
+  },
+  {
+    "Tag": {
+      "Name": "Apartamentos - Icaraí"
+    },
+    "Articles": [
+      {
+        "Name": "Apartamento para alugar em Icarai, Niterói - 90m², R$ 2.200 - ZAP Imóveis",
+        "Description": "Aluguel: 2200\nCondominio: 653\nDomingues de Sá, de frente para o campo de são bento. 3 quartos.",
+        "Link": "http://www.zapimoveis.com.br/superdestaque/aluguel+apartamento+3-quartos+icarai+niteroi+rj+90m2+RS2200/ID-7099858/"
       },
       {
-        "Name": "Dapper.Net Tutorial Series",
-        "Description": "Série em 3 posts com um bom tutorial sobre Dapper. - Post 1 contém uma boa intrudução sobre instalação e recursos. -Post 2 Fala sobre o Dapper.Contrib. Post 3 - Fala sobre Dapper.Rainbow",
-        "Link": "https://liangwu.wordpress.com/category/dapper-net/"
-      }
-    ]
-  },
-  {
-    "Tag": {
-      "Name": "EntityFramework.Extended"
-    },
-    "Articles": [
-      {
-        "Name": "EntityFramework.Extended Docs",
-        "Description": "Readme do EntityFramework.Extended no GitHub. Queries em batch, future queries, audit trails e cache results",
-        "Link": "https://github.com/loresoft/EntityFramework.Extended/blob/master/readme.md"
+        "Name": "Apartamento para alugar em Icarai, Niterói - 100m², R$ 2.200 - ZAP Imóveis",
+        "Description": "Aluguel: 2200\nCOndominio: 597\nTavares de Macedo com Presidente Backer, 100 m²",
+        "Link": "http://www.zapimoveis.com.br/oferta/aluguel+apartamento+2-quartos+icarai+niteroi+rj+100m2+RS2200/ID-7602092/?paginaoferta=3"
       },
       {
-        "Name": "qq",
-        "Description": "asd",
-        "Link": "asd"
+        "Name": "Apartamento para alugar em Icarai, Niterói - 79m², R$ 2.200 - ZAP Imóveis",
+        "Description": "Aluguel: 2200\nCondominio: ?\nPredio novo, portal de icaraí",
+        "Link": "http://www.zapimoveis.com.br/oferta/aluguel+apartamento+2-quartos+icarai+niteroi+rj+79m2+RS2200/ID-7275504/?paginaoferta=6"
       },
       {
-        "Name": "qqwe",
-        "Description": "qwe",
-        "Link": "qwe"
-      }
-    ]
-  },
-  {
-    "Tag": {
-      "Name": "Elixir"
-    },
-    "Articles": [
-      {
-        "Name": "Learn elixir in five minutos",
-        "Description": "Little elixir cheatsheet",
-        "Link": "http://learnxinyminutes.com/docs/elixir/"
+        "Name": "Apartamento para alugar em Icarai, Niterói - 60m², R$ 1.900 - ZAP Imóveis",
+        "Description": "Aluguel: 1900\nCondominio: 710\nRua Lopes Trovão. Esquina com roberto silveira?\nSemi-Mobiliado",
+        "Link": "http://www.zapimoveis.com.br/oferta/aluguel+apartamento+2-quartos+icarai+niteroi+rj+60m2+RS1900/ID-1671045/?paginaoferta=6"
       },
       {
-        "Name": "Primeiros passos com elixir + pheonix",
-        "Description": "Tutorial sobre elixir + pheonix pelo akita on rails em português",
-        "Link": "http://www.akitaonrails.com/2015/06/02/primeiros-passos-elixir-1-0-phoenix-framework-0-13"
-      }
-    ]
-  },
-  {
-    "Tag": {
-      "Name": "Functional Programming"
-    },
-    "Articles": [
-      {
-        "Name": "Programação Funcional Em Javascript",
-        "Description": "short",
-        "Link": "http://www.srirangan.net/2011-12-functional-programming-in-javascript"
+        "Name": "Apartamento para alugar em Icarai, Niterói - 84m², R$ 1.600 - ZAP Imóveis",
+        "Description": "Aluguel: 1600\nCondominio 800\nBom apartamento, localização desconhecida",
+        "Link": "http://www.zapimoveis.com.br/oferta/aluguel+apartamento+2-quartos+icarai+niteroi+rj+84m2+RS1600/ID-7512087/?paginaoferta=7"
       },
       {
-        "Name": "FSharp For Fun And Profit",
-        "Description": "Um dos maiores recursos de conhecimento de F#, vários tutoriais",
-        "Link": "http://fsharpforfunandprofit.com/"
+        "Name": "Apartamento para alugar em Icarai, Niterói - 80m², R$ 1.700 - ZAP Imóveis",
+        "Description": "Aluguel: 1700\nCondominio: 850\nInício da Miguel de frias",
+        "Link": "http://www.zapimoveis.com.br/oferta/aluguel+apartamento+2-quartos+icarai+niteroi+rj+80m2+RS1700/ID-7701569/?paginaoferta=9"
       },
       {
-        "Name": "Capítulo 6 do Livro Eloquent Javascript",
-        "Description": "Bom tutorial da primeira versão do livro (ele já está na versão 2)",
-        "Link": "http://eloquentjavascript.net/1st_edition/chapter6.html"
+        "Name": "Apartamento para alugar em Icarai, Niterói - 54m², R$ 1.800 - ZAP Imóveis",
+        "Description": "Aluguel: 1800\nCondominio: 609\nPraia de Icaraí, muito bom ao lado do antigo IPC.\nVerificar andar.",
+        "Link": "http://www.zapimoveis.com.br/oferta/aluguel+apartamento+2-quartos+icarai+niteroi+rj+54m2+RS1800/ID-7725051/?paginaoferta=9"
       },
       {
-        "Name": "Don’t Be Scared Of Functional Programming",
-        "Description": "Excelente tutorial sobre programação funcional em javascript",
-        "Link": "http://www.smashingmagazine.com/2014/07/02/dont-be-scared-of-functional-programming/"
+        "Name": "Apartamento para alugar em Icarai, Niterói - 70m², R$ 2.200 - ZAP Imóveis",
+        "Description": "Aluguel: 2200\nCondominio: 385\nRua Nobrega, de frente para o caio martins",
+        "Link": "http://www.zapimoveis.com.br/oferta/aluguel+apartamento+2-quartos+icarai+niteroi+rj+70m2+RS2200/ID-7586159/?paginaoferta=12"
       },
       {
-        "Name": "Recognizing Higher-Order Functions in C#",
-        "Description": "Tutorial em C# abordando programação funcional",
-        "Link": "http://jeremybytes.blogspot.com.br/2014/06/recognizing-higher-order-function-in-c.html"
+        "Name": "Apartamento para alugar em Icarai, Niterói - 80m², R$ 1.800 - ZAP Imóveis",
+        "Description": "Aluguel: 1800\nCondominio: 882\nAlvares de Azevedo. Parece bom. Esquina com Mem de Sá?",
+        "Link": "http://www.zapimoveis.com.br/oferta/aluguel+apartamento+2-quartos+icarai+niteroi+rj+80m2+RS1800/ID-7498690/?paginaoferta=13"
       },
       {
-        "Name": "Functional programming in C#",
-        "Description": "Tutorial do codeproject sobre programação funcional em C# (longo)",
-        "Link": "http://www.codeproject.com/Articles/375166/Functional-programming-in-Csharp"
-      }
-    ]
-  },
-  {
-    "Tag": {
-      "Name": "Chrome Extension"
-    },
-    "Articles": [
+        "Name": "Apartamento para alugar em Icarai, Niterói - 90m², R$ 2.300 - ZAP Imóveis",
+        "Description": "Aluguel: 2300\nCondominio: 387\nRua Doutor Paulo César, portal de icarái. Parece bom",
+        "Link": "http://www.zapimoveis.com.br/oferta/aluguel+apartamento+3-quartos+icarai+niteroi+rj+90m2+RS2300/ID-7272055/?paginaoferta=14"
+      },
       {
-        "Name": "How to build a Chrome Extension series | Juliana Peña",
-        "Description": "Série de 4 tutoriais sobre como criar uma extensão para o google. Parece bom.",
-        "Link": "http://julip.co/projects/how-to-build-a-chrome-extension-series/"
-      }
-    ]
-  },
-  {
-    "Tag": {
-      "Name": "Javascript"
-    },
-    "Articles": [
+        "Name": "Apartamento para alugar em Icarai, Niterói - 70m², R$ 2.500 - ZAP Imóveis",
+        "Description": "Aluguel: 2500\nCondominio: 630\nRua Alvares de Azevedo, esquina com Gaviao Peixoto. Apesar de um pouco caro, parece muito bom",
+        "Link": "http://www.zapimoveis.com.br/oferta/aluguel+apartamento+2-quartos+icarai+niteroi+rj+70m2+RS2500/ID-7543812/?paginaoferta=19"
+      },
       {
-        "Name": "Tips And Tricks - Google Chrome",
-        "Description": "Muito boas dicas sobre como utilizar o DevTool do chrome. Destaque para o console.profile!",
-        "Link": "https://developer.chrome.com/devtools/docs/tips-and-tricks"
-      }
-    ]
-  },
-  {
-    "Tag": {
-      "Name": "dasdas"
-    },
-    "Articles": [
+        "Name": "Apartamento para alugar em Icarai, Niterói - 134m², R$ 2.000 - ZAP Imóveis",
+        "Description": "Aluguel: 2000\nCondominio: 750\nFinal da Miguel de Frias",
+        "Link": "http://www.zapimoveis.com.br/oferta/aluguel+apartamento+3-quartos+icarai+niteroi+rj+134m2+RS2000/ID-7429587/?paginaoferta=31"
+      },
       {
-        "Name": "dada",
-        "Description": "daasdas",
-        "Link": "dasad"
-      }
-    ]
-  },
-  {
-    "Tag": {
-      "Name": "aaa"
-    },
-    "Articles": [
+        "Name": "Apartamento para alugar em Icarai, Niterói - 66m², R$ 2.000 - ZAP Imóveis",
+        "Description": "Aluguel: 2000\nCondominio: 600\nTavares de Macedo, 1 quarto",
+        "Link": "http://www.zapimoveis.com.br/oferta/aluguel+apartamento+1-quarto+icarai+niteroi+rj+66m2+RS2000/ID-6529664/?paginaoferta=41"
+      },
       {
-        "Name": "aaa",
-        "Description": "aaa",
-        "Link": "aa"
-      }
-    ]
-  },
-  {
-    "Tag": {
-      "Name": "a"
-    },
-    "Articles": [
-      {
-        "Name": "a",
-        "Description": "a",
-        "Link": "a"
-      }
-    ]
-  },
-  {
-    "Tag": {
-      "Name": "aaaaa"
-    },
-    "Articles": [
-      {
-        "Name": "aaaa",
-        "Description": "aaaa",
-        "Link": "aaaa"
-      }
-    ]
-  },
-  {
-    "Tag": {
-      "Name": "cc"
-    },
-    "Articles": [
-      {
-        "Name": "ccc",
-        "Description": "cc",
-        "Link": "cc"
-      }
-    ]
-  },
-  {
-    "Tag": {
-      "Name": "x"
-    },
-    "Articles": [
-      {
-        "Name": "x",
-        "Description": "x",
-        "Link": "x"
-      }
-    ]
-  },
-  {
-    "Tag": {
-      "Name": "vvv"
-    },
-    "Articles": [
-      {
-        "Name": "vvv",
-        "Description": "vv",
-        "Link": "vvv"
-      }
-    ]
-  },
-  {
-    "Tag": {
-      "Name": "pi"
-    },
-    "Articles": [
-      {
-        "Name": "pio",
-        "Description": "pi",
-        "Link": "pi"
-      }
-    ]
-  },
-  {
-    "Tag": {
-      "Name": "uuu"
-    },
-    "Articles": [
-      {
-        "Name": "uuu",
-        "Description": null,
-        "Link": "uuu"
-      }
-    ]
-  },
-  {
-    "Tag": {
-      "Name": "rrr"
-    },
-    "Articles": [
-      {
-        "Name": "rrrr",
-        "Description": "rrr",
-        "Link": "rr"
-      }
-    ]
-  },
-  {
-    "Tag": {
-      "Name": "rrrm"
-    },
-    "Articles": [
-      {
-        "Name": "rrrri",
-        "Description": "rrrm",
-        "Link": "rrm"
-      }
-    ]
-  },
-  {
-    "Tag": {
-      "Name": "gg"
-    },
-    "Articles": [
-      {
-        "Name": "gg",
-        "Description": "gg",
-        "Link": "gg"
-      }
-    ]
-  },
-  {
-    "Tag": {
-      "Name": "gg1"
-    },
-    "Articles": [
-      {
-        "Name": "gg1",
-        "Description": "g1",
-        "Link": "g1"
-      }
-    ]
-  },
-  {
-    "Tag": {
-      "Name": "gg2"
-    },
-    "Articles": [
-      {
-        "Name": "gg2",
-        "Description": "gg2",
-        "Link": "gg2"
-      }
-    ]
-  },
-  {
-    "Tag": {
-      "Name": "pio"
-    },
-    "Articles": [
-      {
-        "Name": "pio",
-        "Description": "pio",
-        "Link": "pio"
-      }
-    ]
-  },
-  {
-    "Tag": {
-      "Name": "oi"
-    },
-    "Articles": [
-      {
-        "Name": "oi",
-        "Description": "oi",
-        "Link": "oi"
-      }
-    ]
-  },
-  {
-    "Tag": {
-      "Name": "fd"
-    },
-    "Articles": [
-      {
-        "Name": "asdfd",
-        "Description": "fd",
-        "Link": "fd"
-      }
-    ]
-  },
-  {
-    "Tag": {
-      "Name": "puopu"
-    },
-    "Articles": [
-      {
-        "Name": "ppuiu",
-        "Description": "pupupu",
-        "Link": "pupupu"
-      }
-    ]
-  },
-  {
-    "Tag": {
-      "Name": "dadad"
-    },
-    "Articles": [
-      {
-        "Name": "Teste form",
-        "Description": "dasdad\r\n",
-        "Link": "dadadad"
-      }
-    ]
-  },
-  {
-    "Tag": {
-      "Name": "iyuiy"
-    },
-    "Articles": [
-      {
-        "Name": "uitui",
-        "Description": "iuyiy",
-        "Link": "iyuiyu"
+        "Name": "Apartamento para alugar em Icarai, Niterói - 65m², R$ 2.000 - ZAP Imóveis",
+        "Description": "Aluguel: 2000\nCondominio: 580\nBanheiro, cozinha um pouco velhos. Parece entre Gen pereira da silva e alvares de azevedo",
+        "Link": "http://www.zapimoveis.com.br/oferta/aluguel+apartamento+1-quarto+icarai+niteroi+rj+65m2+RS2000/ID-7704067/?paginaoferta=32"
       }
     ]
   }

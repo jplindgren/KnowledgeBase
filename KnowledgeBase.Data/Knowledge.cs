@@ -9,6 +9,26 @@ namespace KnowledgeBase.Data{
         public Tag Tag { get; set; }
         public IList<Article> Articles { get; set; }
 
+        public bool ContainsArticle(string name) {
+            if (string.IsNullOrEmpty(name))
+                throw new ArgumentNullException("name");
+            if (Articles == null)
+                Articles = new List<Article>();
+            return Articles.Any(x => x.Name == name);
+        }
+
+        public void RemoveArticle(string name) {
+            if (string.IsNullOrEmpty(name))
+                throw new ArgumentNullException("name");
+            if (Articles == null)
+                Articles = new List<Article>();
+
+            var article = Articles.Where(x => x.Name == name).FirstOrDefault();
+            if (article == null)
+                throw new Exception("Article not found for name: " + name);
+            Articles.Remove(article);
+        }
+
         public bool AddArticle(Article article) {
             if (article == null)
                 throw new ArgumentNullException("article");

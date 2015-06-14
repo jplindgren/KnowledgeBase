@@ -9,18 +9,13 @@
         <title>Knowledge base</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-        <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
-        <style>
-            body {
-                padding-top: 50px;
-                padding-bottom: 20px;
-            }
-        </style>
-        
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />        
         <link href="~/Content/css/bootstrap-theme.min.css" rel="stylesheet" />
         <link href="~/Content/css/main.css" rel="stylesheet" />
+        <link href="~/Content/css/toastr.css" rel="stylesheet" />
+
         <script src="~/Scripts/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     </head>
     <body>
@@ -49,7 +44,7 @@
           </button>
           <a class="navbar-brand" href="/">
               <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-              Knowledge Base</a>
+              MyContent</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <form class="navbar-form navbar-left" role="form">
@@ -103,10 +98,12 @@
         <script src="~/Scripts/vendor/bootstrap.min.js"></script>
         <script src="~/Scripts/vendor/jquery.bootstrap-autohidingnavbar.js"></script>
         <script src="~/Scripts/vendor/shortcut.js"></script>
+        <script src="~/Scripts/vendor/toastr.min.js"></script>
 
         <script src="~/Scripts/main.js"></script>
         <script src="~/Scripts/app/serializeObject.js"></script>
         <script src="~/Scripts/app/myShortcuts.js"></script>
+
         @RenderSection("pagescripts", false)
         <script>
             // Only enable if the document has a long scroll bar
