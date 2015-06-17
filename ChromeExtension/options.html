@@ -1,14 +1,10 @@
-<!doctype html>
-<!--
- This page is shown when the extension button is clicked, because the
- "browser_action" field in manifest.json contains the "default_popup" key with
- value "popup.html".
- -->
-<html>
-  <head>
-    <meta name="description" content="test">
-    <title>Knowledge Base Extension's Popup</title>
-    <style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>MyContent Options</title>
+
+	<style>
       body {
         font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
         font-size: 100%;
@@ -18,10 +14,9 @@
       }
       .control {
         padding: 5px 5px 5px 5px;
-        margin: 5px;
-        width: 92%;
-        
+        margin: 5px;        
       }
+
       .box{
         -webkit-box-shadow: 1px 1px 1px 1px #ccc;
         -moz-box-shadow: 1px 1px 1px 1px #ccc;
@@ -36,12 +31,10 @@
         padding: 5px 10px;
         outline: none;
         box-shadow:3px 3px 3px #96A1BD;
+
+        width: 92%;
       }
-      .content{
-        text-overflow: ellipsis;
-        overflow: hidden;
-        max-width: 400px;
-      }
+
       #status {
         /* avoid an excessively wide status text */
         white-space: pre;
@@ -89,27 +82,17 @@
       }
 
     </style>
+</head>
+<body>
+  <div id="content">
+    Choose your server url:
+    <input type="text" class="control box" id="url">
+  </div>
 
-    <!--
-      - JavaScript and HTML must be in separate files: see our Content Security
-      - Policy documentation[1] for details and explanation.
-      -
-      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
-     -->
-    <script src="popup.js"></script>
-  </head>
-  <body>
-    <h2 class="control"><a href="http://localhost:62431/">Knowledge base</a></h2>
-    <div id="status" style="width: 100%"></div>
-    <div id="settings" style="display:none">
-      <button class="control btn" id="goSettings">Open Settings</button>
-    </div>
-    <div class="content" id="content">
-      <input class="control box" type="text" id="name" placeholder="Choose a name..."><br/>
-      <input class="control box" type="text" id="tag" required placeholder="Choose a tag..."><br/>
-      <textarea class="control box" rows="3" id="description" placeholder="Choose a description..."></textarea><br/>
-      <button class="control btn" id="save">Save!</button>
-    </div>      
-  </body>
+	<div id="status"></div>
+	<button class="control btn" id="save">Save</button>
+  <button class="control btn" id="clear">Clear</button>
+
+	<script src="options.js"></script>
+</body>
 </html>
-

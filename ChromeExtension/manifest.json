@@ -5,20 +5,21 @@
   "description": "This extension allow us to save and link into our knowledge base with a tag",
   "version": "1.0",
 
+   "options_ui": {
+    // Required.
+    "page": "options.html",
+    // Recommended.
+    "chrome_style": true
+  },
+
   "browser_action": {
     "default_icon": "icon.png",
     "default_popup": "popup.html"
   },
   "permissions": [
     "activeTab",
+    "storage",
     "https://ajax.googleapis.com/",
     "http://*/"
-  ],
-
-  "content_scripts": [{
-    "matches": [
-      "<all_urls>"
-    ],
-    "js": ["content.js", "jquery-2.1.4.min.js"]
-  }]
+  ]
 }

@@ -9,6 +9,8 @@ var code = 'var meta = document.querySelector("meta[name=\'description\']");' +
            '    description: meta || ""' +
            '});';
 
+var settingsServerUrl = ''; 
+
 
 /**
  * Get the current URL.
@@ -63,9 +65,9 @@ function getCurrentTab(callback) {
  *   The callback gets a string that describes the failure reason.
  */
 function sendArticle(knowledge, callback, errorCallback){
-    var serverUrl = "http://localhost:62431/knowledge/AddArticle"
+    var articleUrl = settingsServerUrl + "/knowledge/AddArticle";
     var x = new XMLHttpRequest();
-    x.open('POST', serverUrl);
+    x.open('POST', articleUrl);
     x.setRequestHeader('Content-type','application/json; charset=utf-8');
     // The Google image search API responds with JSON, so let Chrome parse it.
     x.responseType = 'json';
@@ -81,9 +83,10 @@ function sendArticle(knowledge, callback, errorCallback){
 }
 
 function getTags(successHandler, errorHandler){
-    var serverUrl = "http://localhost:62431/tag/index"
+    var tagsUrl = settingsServerUrl + "/tag/index";
+    //var serverUrl = "http://localhost:62431"
     var x = new XMLHttpRequest();
-    x.open('POST', serverUrl);
+    x.open('POST', tagsUrl);
     x.setRequestHeader('Content-type','application/json; charset=utf-8');
     
     x.responseType = 'json';
@@ -93,7 +96,7 @@ function getTags(successHandler, errorHandler){
         successHandler && successHandler(response);
     };
     x.onerror = function(e) {
-        errorCallback(e);
+        errorHandler && errorHandler(e);
     };
     x.send();
 }
@@ -140,11 +143,35 @@ function submit(e){
     });    
 }
 
+function validOptions(){
+    chrome.storage.sync.get("serverUrl", function(items) {
+        if (!items.serverUrl){
+            document.getElementById('content').style.display = "none";
+            document.getElementById('settings').style.display = "block";
+            renderStatus('Server url not defined. Access your options pane and set your server url');
+            
+            document.querySelector('#goSettings').addEventListener('click',function() {
+                if (chrome.runtime.openOptionsPage) {
+                    // New way to open options pages, if supported (Chrome 42+).
+                    chrome.runtime.openOptionsPage();
+                } else {
+                    // Reasonable fallback.
+                    window.open(chrome.runtime.getURL('options.html'));
+                }
+            });
+        }else{
+            settingsServerUrl = items.serverUrl;
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
-    getCurrentTab(function(url, tab) {        
-        document.getElementById('name').value = tab.title;
-        fillDescriptionFromPage();
+    validOptions();
+    getCurrentTab(function(url, tab) {
         document.getElementById('save').addEventListener('click', submit);
+        document.getElementById('name').value = tab.title;
+        fillDescriptionFromPage();        
+        
         getTags(function(results){
             var input = document.getElementById('tag');
             autoComplt.enable(input, {
@@ -162,7 +189,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     openList(hints);
                 }
             });
-            renderStatus(results);
         });
 
     });
