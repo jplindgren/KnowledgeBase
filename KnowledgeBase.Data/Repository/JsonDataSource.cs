@@ -14,7 +14,7 @@ namespace KnowledgeBase.Data.Repository {
             this.datasourcePath = datasourcePath;
         }
         public IList<Knowledge> Load() {
-            string data = LoadData(datasourcePath);
+            string data = LoadData();
             var result = JsonParse(data);
             return result;
         }
@@ -24,7 +24,7 @@ namespace KnowledgeBase.Data.Repository {
             File.WriteAllText(datasourcePath, knowledgeBaseJson, Encoding.UTF8);
         }
 
-        private string LoadData(string filePath){
+        public string LoadData(){
             if (!File.Exists(datasourcePath))
                 throw new FileNotFoundException();
 
