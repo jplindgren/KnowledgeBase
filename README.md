@@ -1,4 +1,4 @@
-# KnowledgeBase
+# [KnowledgeBase] (http://jplindgren.github.io/KnowledgeBase/)
 
 [![Travis](https://img.shields.io/travis/idleberg/Readme-Helper.svg?style=flat-square)](https://travis-ci.org/jplindgren/KnowledgeBase)
 
