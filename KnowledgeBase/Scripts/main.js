@@ -1,5 +1,8 @@
 $(function () {
+  
     var _ = {};
+
+    Application.run(document.body);
 
     toastr.options.closeButton = true;
     toastr.options.progressBar = true;
@@ -39,36 +42,12 @@ $(function () {
 
 
     $(".navbar-fixed-top").autoHidingNavbar();
-    var root = $('html,body');
-    //$('a[href*=#]:not([href=#])').on('click', function (event) {
+
+    //var root = $('html,body');
+    //$('.pill-link').on('click', function (event) {
     //    event.preventDefault();
     //    root.animate({ scrollTop: $('[name="' + $.attr(this, 'href').substr(1) + '"]').offset().top - 40 }, 600);
     //});
-
-    $("#search").on('keyup', function (event) {
-        event.preventDefault();
-        event.stopPropagation();
-        if (!event.target.value) {
-            $('.article').each(function (index) {
-                $(this.closest('div')).show();
-            });
-        } else {
-            var filteredArticles = $('.article[data-name*="' + event.target.value + '"]');
-            var notFilteredArticles = $('.article:not([data-name*="' + event.target.value + '"])');
-
-            $(filteredArticles).each(function (index) {
-                $(this.closest('div')).show();
-            });
-            $(notFilteredArticles).each(function (index) {
-                $(this.closest('div')).hide();
-            });
-        }
-    });
-
-    $('.pill-link').on('click', function (event) {
-        event.preventDefault();
-        root.animate({ scrollTop: $('[name="' + $.attr(this, 'href').substr(1) + '"]').offset().top - 40 }, 600);
-    });
 
     // ADD SLIDEDOWN ANIMATION TO DROPDOWN //
     $('.dropdown').on('show.bs.dropdown', function (e) {

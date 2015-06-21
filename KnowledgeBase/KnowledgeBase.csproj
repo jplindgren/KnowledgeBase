@@ -202,9 +202,15 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Scripts\app\application.js" />
+    <Content Include="Scripts\app\article-list.js" />
+    <Content Include="Scripts\app\knowledge-controller.js" />
     <Content Include="Scripts\app\myShortcuts.js" />
+    <Content Include="Scripts\app\search-input.js" />
     <Content Include="Scripts\app\serializeObject.js" />
+    <Content Include="Scripts\app\tag-menu.js" />
     <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\vendor\radio.min.js" />
     <Content Include="Scripts\vendor\toastr.js" />
     <Content Include="Scripts\vendor\toastr.min.js" />
     <Content Include="Scripts\vendor\bootstrap.js" />
