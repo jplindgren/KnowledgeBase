@@ -1,0 +1,9 @@
+node_modules/
+bower_components/
+npm-debug.log
+
+# Build results
+x64/
+dist;
+x86/
+build/
