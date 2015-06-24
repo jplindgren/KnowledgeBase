@@ -37,7 +37,7 @@
         outline: none;
         box-shadow:3px 3px 3px #96A1BD;
       }
-      .content{
+      .form{
         text-overflow: ellipsis;
         overflow: hidden;
         max-width: 400px;
@@ -88,21 +88,38 @@
         transition: background-color 0.3s, color 0.3s, border 0.3s; 
       }
 
+      .hidden{
+        display: none;
+      }
+
+      .show{
+        display: block;
+      }
+
+      #loading {      
+          margin: 0 0 0 120px;
+      }
+
     </style>
   </head>
   <body>
     <h2 class="control"><a href="http://localhost:62431/">Knowledge base</a></h2>
     <div id="status" style="width: 100%"></div>
+    
     <div id="settings" style="display:none">
       <button class="control btn" id="goSettings">Open Settings</button>
     </div>
-    <div class="content" id="content">
+
+    <div class="form" id="form">
       <input class="control box" type="text" id="name" placeholder="Choose a name..."><br/>
       <input class="control box" type="text" id="tag" required placeholder="Choose a tag..."><br/>
       <textarea class="control box" rows="3" id="description" placeholder="Choose a description..."></textarea><br/>
+      
       <button class="control btn" id="save">Save!</button>
+      <img src="ajax-loader.gif" id="loading" alt="loading" class="hidden" />
     </div>
-
+    
+  
     <!--
       - JavaScript and HTML must be in separate files: see our Content Security
       - Policy documentation[1] for details and explanation.

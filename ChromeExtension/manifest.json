@@ -3,7 +3,7 @@
 
   "name": "Knowledge Base",
   "description": "This extension allow us to save and link into our knowledge base with a tag",
-  "version": "1.0",
+  "version": "0.3",
 
    "options_ui": {
     // Required.

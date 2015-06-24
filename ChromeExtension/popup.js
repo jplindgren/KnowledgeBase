@@ -1,7 +1,7 @@
 // Copyright (c) 2014 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
-
+'use strict'
 var code = 'var meta = document.querySelector("meta[name=\'description\']");' + 
            'if (meta) meta = meta.getAttribute("content");' +
            'else { meta = document.querySelector("meta[name=\'twitter:description\']"); ' +
@@ -12,7 +12,21 @@ var code = 'var meta = document.querySelector("meta[name=\'description\']");' +
            '    description: meta || ""' +
            '});';
 
-var settingsServerUrl = ''; 
+var settingsServerUrl = '';
+var requestTimeout = 1000 * 3;  // 3 seconds
+
+// elements
+var loading = document.getElementById('loading');
+var form = document.getElementById('form');
+
+var save = document.getElementById('save');
+var tagElement = document.getElementById('tag');
+var articleElement = document.getElementById('name');
+var descriptionElement = document.getElementById('description');
+
+var statusMessage = document.getElementById('status');
+var settings = document.getElementById('settings');
+var goSettings = document.getElementById('goSettings');
 
 
 /**
@@ -70,16 +84,21 @@ function createXMLHttpRequest(url, method, successHandler, errorHandler, body) {
     var xhr = new XMLHttpRequest();
     xhr.open(method, url);
     xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4) {
-            if (xhr.status === 200) {
-                if (xhr.responseText){
-                    var results = JSON.parse(xhr.responseText);    
-                }                
-                successHandler && successHandler(results);
-            } else {
-                errorHandler && errorHandler("Error " + xhr.status);
-            }
+        if (xhr.readyState != 4)
+            return;
+
+        if (xhr.status === 200) {
+            if (xhr.responseText){
+                var results = JSON.parse(xhr.responseText);
+            }                
+            successHandler && successHandler(results);
+        } else {
+            errorHandler && errorHandler("Error " + xhr.status);
         }
+    };
+
+    xhr.onerror = function(error) {
+        errorHandler && errorHandler("Error " + error);
     };
     return xhr;
 }
@@ -100,11 +119,17 @@ function makeGET(url, successHandler, errorHandler){
  */
 function sendArticle(article){
     var articleUrl = settingsServerUrl + "/knowledge/AddArticle";
+    showLoading();
     var successHandler = function(message) {
-        document.getElementById('content').style.display = "none";
+        form.style.display = "none";
+        hideLoading();
         renderStatus('Article sent with sucess');
     };
-    makePOST(articleUrl, successHandler, renderStatus, article);
+    var errorHandler = function(error){
+        hideLoading();
+        renderStatus(error);
+    }
+    makePOST(articleUrl, successHandler, errorHandler, article);
 }
 
 function getTags(){
@@ -116,8 +141,7 @@ function getTags(){
 }
 
 function setAutoCompleteTags(tags){
-    var input = document.getElementById('tag');
-    autoComplt.enable(input, {
+    autoComplt.enable(tagElement, {
         // the hintsFetcher is your customized function which searchs the proper autocomplete hints based on the user's input value.
         hintsFetcher : function (v, openList) {
             var hints = [],
@@ -135,7 +159,19 @@ function setAutoCompleteTags(tags){
 }
 
 function renderStatus(statusText) {
-  document.getElementById('status').textContent = statusText;
+  statusMessage.textContent = statusText;
+}
+
+function showLoading(){
+    loading.className = 'show';
+    save.className = save.className.replace( /(?:^|\s)show(?!\S)/g , '' );
+    save.className += ' hidden';
+}
+
+function hideLoading(){
+    loading.className = 'hidden';
+    save.className = save.className.replace( /(?:^|\s)hidden(?!\S)/g , '' );
+    save.className += ' show';
 }
 
 function extractHostPageData(){
@@ -144,32 +180,32 @@ function extractHostPageData(){
         code: code
     }, function(results) {
         if (!results) {
-            document.getElementById('description').value = "";
+            descriptionElement.value = "";
         }
         var result = results[0];
-        document.getElementById('description').value = result.description;
+        descriptionElement.value = result.description;
     });
 }
 
 function submit(e){
     e.preventDefault();
-    getCurrentTab(function(url, tab) {        
-        var tag = document.getElementById('tag').value;
-        var description = document.getElementById('description').value;
+    getCurrentTab(function(url, tab) {
+        var tag = tagElement.value;
+        var description = descriptionElement.value;
         var name = tab.title;
         
         sendArticle({ tag: tag, name: name, description: description, link: url });
     });    
 }
 
-function validOptions(){
+function validSettings(){
     chrome.storage.sync.get("serverUrl", function(items) {
         if (!items.serverUrl){
-            document.getElementById('content').style.display = "none";
-            document.getElementById('settings').style.display = "block";
+            form.style.display = "none";
+            settings.style.display = "block";
             renderStatus('Server url not defined. Access your options pane and set your server url');
             
-            document.querySelector('#goSettings').addEventListener('click',function() {
+            goSettings.addEventListener('click',function() {
                 if (chrome.runtime.openOptionsPage) {
                     // New way to open options pages, if supported (Chrome 42+).
                     chrome.runtime.openOptionsPage();
@@ -185,10 +221,10 @@ function validOptions(){
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    validOptions();
+    validSettings();
     getCurrentTab(function(url, tab) {
-        document.getElementById('save').addEventListener('click', submit);
-        document.getElementById('name').value = tab.title;
+        save.addEventListener('click', submit);
+        articleElement.value = tab.title;
         extractHostPageData();        
         
         getTags();
