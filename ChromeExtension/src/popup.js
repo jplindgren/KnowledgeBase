@@ -126,12 +126,17 @@
             form.style.display = "none";
             hideLoading();
             renderStatus('Article sent with sucess');
+            markAsSent(article);
         };
         var errorHandler = function(error){
             hideLoading();
             renderStatus(error);
         };
         makePOST(articleUrl, successHandler, errorHandler, article);
+    }
+
+    function markAsSent(article){
+        var sentArticles = [];
     }
 
     function getTags(){
@@ -223,6 +228,15 @@
     }
 
     document.addEventListener('DOMContentLoaded', function() {
+        chrome.storage.local.set({test: 'oi'}, function() {
+          console.log('localstorage saved!');
+        });
+        chrome.storage.sync.get('test', function(items) {
+            console.log(items);
+        });
+         chrome.storage.sync.get('serverUrl', function(items) {
+            console.log(items);
+        });
         validSettings();
         getCurrentTab(function(url, tab) {
             save.addEventListener('click', submit);
