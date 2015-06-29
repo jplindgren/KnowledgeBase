@@ -1,46 +1,67 @@
-//page elements
-:(function(){
-    var contentElement = document.getElementById('content');
-    var statusElement = document.getElementById('status');
-    var urlElement = document.getElementById('url');
+var Options = function(storage, window, pageElements){
+    'use strict';
+
+    var elements = pageElements;
 
     function showTimedMessage(message, timeout){
-        statusElement.textContent = message;
+        elements.status.textContent = message;
+        hideElement(elements.content);
         setTimeout(function(){
-            statusElement.textContent = '';
-            contentElement.style.display = 'block';
+            elements.status.textContent = '';
+            showElement(elements.content);
         }, timeout);
     }
 
     function clearUrl(){
-        urlElement.value = '';
+        elements.url.value = '';
+    }
+
+    function hideElement(element){
+        element.style.display = 'none';
+    }
+
+    function showElement(element){
+        element.style.display = 'block';
+    }
+
+    function showSaveTimedMessage(){
+        showTimedMessage('Options saved.', 3000);
     }
 
     // Saves options to chrome.storage
     function save_options() {
-        var url = document.getElementById('url').value;
-        chrome.storage.sync.set({
+        var url = elements.url.value;
+        storage.sync.set({
             serverUrl: url
-        }, function() {
-            showTimedMessage('Options saved.');
-        });
+        }, showSaveTimedMessage);
     }
 
-    // stored in chrome.storage.
+    // stored in .
     function restore_options() {
-        chrome.storage.sync.get('serverUrl', function(items) {
-            document.getElementById('url').value = items.serverUrl || '';
+        storage.sync.get('serverUrl', function(items) {
+            elements.url.value = items.serverUrl || '';
         });
     }
 
     function clear_options(){
-        chrome.storage.sync.clear(function() {
+        storage.sync.clear(function() {
             clearUrl();
-            showTimedMessage('Options cleaned.');
+            showTimedMessage('Options cleaned.', 1500);
         });
     }
 
-    document.addEventListener('DOMContentLoaded', restore_options);
-    document.getElementById('save').addEventListener('click', save_options);
-    document.getElementById('clear').addEventListener('click', clear_options);
-})();
+    function addListeners(){
+        document.addEventListener('DOMContentLoaded', restore_options);
+        elements.save.addEventListener('click', save_options);
+        elements.clear.addEventListener('click', clear_options);
+    }
+
+    addListeners();
+
+    return {
+        clearUrl: clearUrl,
+        save_options: save_options,
+        showTimedMessage: showTimedMessage,
+        showSaveTimedMessage: showSaveTimedMessage
+    };
+};
