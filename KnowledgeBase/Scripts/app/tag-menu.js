@@ -13,7 +13,7 @@
         var root = this.root;
         return function (event) {
             event.preventDefault();
-            root.animate({ scrollTop: $('[name="' + $.attr(this, 'href').substr(1) + '"]').offset().top - 40 }, 600);
+            root.animate({ scrollTop: $('[id="' + $.attr(this, 'href').substr(1) + '"]').offset().top - 40 }, 600);
         }
     }
 })(jQuery, Application);
