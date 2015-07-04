@@ -20,14 +20,14 @@
 @foreach (var item in Model.Knowledges) {
     <div class="knowledge">
         <h2 class="text-center">
-            <a href="#" role="button" name="@item.Tag.Name" class="openAllLinks">@item.Tag.Name &raquo;</a>
+            <a href="#" role="button" id="@item.Tag.Name" class="openAllLinks">@item.Tag.Name &raquo;</a>
         </h2> 
         
     
         <div class="row">
             @foreach (var article in item.Articles) { 
                 <div class="col-md-4">
-                    <div data-name="@article.Name" class="article well">
+                    <div data-name="@article.Name.ToLower()" class="article well">
                         <a class="pull-right" href="@Url.Action("remove", "knowledge")?id=@Html.Encode(@article.Name)" role="button">x</a>
                         <h3>@article.Name</h3>
                         <small>@article.Description</small>

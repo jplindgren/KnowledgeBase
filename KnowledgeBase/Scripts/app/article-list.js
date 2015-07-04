@@ -39,8 +39,8 @@
                 $(this.closest('div')).show();
             });
         } else {
-            var filteredArticles = $('.article[data-name*="' + event.target.value + '"]');
-            var notFilteredArticles = $('.article:not([data-name*="' + event.target.value + '"])');
+            var filteredArticles = $('.article[data-name*="' + event.target.value.toLowerCase() + '"]');
+            var notFilteredArticles = $('.article:not([data-name*="' + event.target.value.toLowerCase() + '"])');
 
             $(filteredArticles).each(function (index) {
                 $(this.closest('div')).show();
