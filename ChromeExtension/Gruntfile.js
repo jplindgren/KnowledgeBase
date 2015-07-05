@@ -70,6 +70,16 @@ module.exports = function(grunt) {
         qunit: {
           all: ['test/**/*.html']
         },
+        crx: {
+          myPublicPackage: {
+            "src": "dist/*",
+            "dest": "prod/staging/<%= pkg.name %>-<%= pkg.version %>-dev.crx",
+            "zipDest": "prod/production/<%= pkg.name %>-<%= pkg.version %>-dev.zip",
+            "options": {
+              "maxBuffer": 3000 * 1024 //build extension with a weight up to 3MB
+            }
+          }
+        },
         watch: {
           files: ['<%= jshint.files %>', 'tests/*.js', 'tests/*.html', 'src/*.js'],
           tasks: ['jshint', 'qunit']
@@ -87,6 +97,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-usemin');
     grunt.loadNpmTasks('grunt-contrib-qunit');
+    grunt.loadNpmTasks('grunt-crx');
 
-    grunt.registerTask('default', ['jshint', 'useminPrepare', 'qunit', 'copy', 'concat', 'uglify', 'usemin']);
+    grunt.registerTask('default', ['jshint', 'useminPrepare', 'qunit', 'copy', 'concat', 'uglify', 'usemin', 'crx']);
 };
