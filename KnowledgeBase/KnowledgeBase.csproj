@@ -206,6 +206,7 @@
     <Content Include="Scripts\app\article-list.js" />
     <Content Include="Scripts\app\knowledge-controller.js" />
     <Content Include="Scripts\app\myShortcuts.js" />
+    <Content Include="Scripts\app\create-article-popup.js" />
     <Content Include="Scripts\app\search-input.js" />
     <Content Include="Scripts\app\serializeObject.js" />
     <Content Include="Scripts\app\tag-menu.js" />

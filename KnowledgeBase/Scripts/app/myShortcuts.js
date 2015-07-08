@@ -1,6 +1,6 @@
 ﻿$(function () {
     shortcut.add("Ctrl+A", 	function() { 
-        $('#addArticleButton').dropdown('toggle');
+        $('#openAddArticlePopup').dropdown('toggle');
         var focusControl = $('#name');
         if (focusControl.is(':visible'))
             focusControl.focus();

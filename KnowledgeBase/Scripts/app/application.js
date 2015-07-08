@@ -8,8 +8,9 @@
         Application.config();
 
         this.searchInput = new Application.SearchInput($("#search"));
-        this.articleList = new Application.ArticleList($('#origDivKnowledgeList'));
         this.tagMenu = new Application.TagMenu($('.pill-link'), $('html,body'));
+        this.articleList = new Application.ArticleList($('#origDivKnowledgeList'), $('#divKnowledgeList'));
+        this.createArticlePopup = new Application.CreateArticlePopup($('.dropdown'), this.articleList);
     }
 
     Application.config = function () {

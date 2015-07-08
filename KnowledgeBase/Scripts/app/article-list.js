@@ -1,6 +1,7 @@
 ﻿; (function ($, pubsub, Application) {
-    Application.ArticleList = function ArticleList(container) {
-        this.container = container;
+    Application.ArticleList = function ArticleList(bootstrapContainer, ajaxContainer) {
+        this.bootstrapContainer = bootstrapContainer;
+        this.ajaxContainer = ajaxContainer;
         this.subscribe();
         this.addEventListener();
     }
@@ -10,7 +11,7 @@
     }
 
     Application.ArticleList.prototype.addEventListener = function addEventListener() {
-        var openAllLinks = this.container.find('.openAllLinks');
+        var openAllLinks = this.bootstrapContainer.find('.openAllLinks');
         openAllLinks.on('click', function (evt) {
             evt.preventDefault();
             evt.stopPropagation();
@@ -30,7 +31,8 @@
     }
 
     Application.ArticleList.prototype.reload = function reload() {
-        
+        this.bootstrapContainer.html('');
+        this.ajaxContainer.load('Knowledge/GetKnowledgeList');
     }
 
     Application.ArticleList.prototype.filter = function filter(content) {
