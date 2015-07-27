@@ -12,11 +12,11 @@ using System.Web.Mvc;
 namespace KnowledgeBase.Controllers{
     public class KnowledgeController : Controller{
         KnowledgeRepository repository;
-        JsonDataSource jsonDataSource;
+        IDatasource datasource;
         public KnowledgeController() {
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"App_Data\knowledge.json");
-            jsonDataSource = new JsonDataSource(path);
-            repository = new KnowledgeRepository(jsonDataSource);
+            datasource = new AzureStorageDatasource();
+            repository = new KnowledgeRepository(datasource);
         }
 
         //

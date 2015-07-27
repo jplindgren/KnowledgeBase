@@ -10,11 +10,11 @@ using System.Web.Mvc;
 namespace KnowledgeBase.Controllers{
     public class TagController : Controller{
         KnowledgeRepository repository;
-        JsonDataSource jsonDataSource;
+        IDatasource dataSource;
         public TagController() {
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"App_Data\knowledge.json");
-            jsonDataSource = new JsonDataSource(path);
-            repository = new KnowledgeRepository(jsonDataSource);
+            dataSource = new AzureStorageDatasource();
+            repository = new KnowledgeRepository(dataSource);
         }
         //
         // GET: /Tag/

@@ -202,3 +202,5 @@ ChromeExtension/dist/
 ChromeExtension/node_modules/
 ChromeExtension/src/npm-debug
 ChromeExtension/*.pem
+
+KnowledgeBase/Web.Release.config
