@@ -1,4 +1,7 @@
-﻿using System;
+﻿using KnowledgeBase.Data;
+using KnowledgeBase.Data.Repository;
+using Microsoft.Practices.Unity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -20,6 +23,16 @@ namespace KnowledgeBase {
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
+
+            RegisterDependencies();
         }
-    }
+
+        private void RegisterDependencies() {
+            
+            IUnityContainer container = new UnityContainer();
+            container.RegisterType<IDatasource, AzureStorageDatasource>();
+
+            DependencyResolver.SetResolver(new UnityResolver(container));            
+        }
+    } //class
 }

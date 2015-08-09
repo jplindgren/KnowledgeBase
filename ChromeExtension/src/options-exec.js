@@ -1,4 +1,4 @@
-(function(){
+;(function(){
 	Options(chrome.storage, window, {
 	    content: document.getElementById('content'),
 	    status: document.getElementById('status'),
@@ -6,4 +6,4 @@
 	    save: document.getElementById('save'),
 	    clear: document.getElementById('clear')
 	});
-})
+})();

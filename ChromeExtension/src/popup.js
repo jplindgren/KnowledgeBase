@@ -205,13 +205,11 @@
         });    
     }
 
-    function validSettings(){
+    function defineVisibiltyBasedOnSettings(hasValidSettingsFunc, hasNotValidSettingsFunc){
         chrome.storage.sync.get("serverUrl", function(items) {
             if (!items.serverUrl){
-                form.style.display = "none";
-                settings.style.display = "block";
-                renderStatus('Server url not defined. Access your options pane and set your server url');
-                
+
+                hasNotValidSettingsFunc();
                 goSettings.addEventListener('click',function() {
                     if (chrome.runtime.openOptionsPage) {
                         // New way to open options pages, if supported (Chrome 42+).
@@ -223,28 +221,27 @@
                 });
             }else{
                 settingsServerUrl = items.serverUrl;
+                getCurrentTab(hasValidSettingsFunc);
             }
         });
     }
 
+    function hideForm(){
+        form.style.display = "none";
+        settings.style.display = "block";
+        renderStatus('Server url not defined. Access your options pane and set your server url');
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
-        chrome.storage.local.set({test: 'oi'}, function() {
-          console.log('localstorage saved!');
-        });
-        chrome.storage.sync.get('test', function(items) {
-            console.log(items);
-        });
-         chrome.storage.sync.get('serverUrl', function(items) {
-            console.log(items);
-        });
-        validSettings();
-        getCurrentTab(function(url, tab) {
+
+        defineVisibiltyBasedOnSettings(function(url, tab) {
             save.addEventListener('click', submit);
             articleElement.value = tab.title;
             extractHostPageData();        
             
             getTags();
-        });
+        }, hideForm);
+        
     });
 
 })();
