@@ -13,7 +13,6 @@ namespace KnowledgeBase.Controllers{
     public class KnowledgeController : Controller{
         KnowledgeRepository repository;
         public KnowledgeController(KnowledgeRepository repository) {
-            //var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"App_Data\knowledge.json");
             this.repository = repository;
         }
 
@@ -44,7 +43,7 @@ namespace KnowledgeBase.Controllers{
                 existentKnowledge = new Knowledge() { Tag = new Tag() { Name = args.Tag } };
                 knowledgeBase.Add(existentKnowledge);
             }
-            existentKnowledge.AddArticle(new Article() { Description = args.Description, Link = args.Link, Name = args.Name } );
+            existentKnowledge.AddArticle(new Article() { Id = Guid.NewGuid(), Description = args.Description, Link = args.Link, Name = args.Name } );
             repository.Save(knowledgeBase);
         }
 
@@ -52,19 +51,18 @@ namespace KnowledgeBase.Controllers{
         // POST: /Knowledge/Remove/{name}
         [HttpGet]
         public ActionResult Remove(string id) {
-            var name = id;
-            if (string.IsNullOrEmpty(name))
-                throw new Exception("Invalid arguments");
+            var articleId = Guid.Parse(id);
+            
             IList<Knowledge> knowledgeBase = repository.Load();
             if (knowledgeBase == null)
                 knowledgeBase = new List<Knowledge>();
-            
-            Knowledge knowledge = knowledgeBase.Where(x => x.ContainsArticle(name)).FirstOrDefault();
+
+            Knowledge knowledge = knowledgeBase.Where(x => x.ContainsArticle(articleId)).FirstOrDefault();
             if (knowledge == null) {
-                throw new Exception("Knowledge not found for article name: " + name);
+                throw new Exception("Knowledge not found");
             }
 
-            knowledge.RemoveArticle(name);
+            knowledge.RemoveArticle(articleId);
             if (knowledge.Articles.Count() == 0) {
                 knowledgeBase.Remove(knowledge);
             }

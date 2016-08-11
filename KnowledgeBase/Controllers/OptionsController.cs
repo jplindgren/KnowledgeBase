@@ -12,11 +12,9 @@ using System.Web.Mvc;
 namespace KnowledgeBase.Controllers{
     public class OptionsController : Controller{
         KnowledgeRepository repository;
-        IDatasource datasource;
 
-        public OptionsController() {
-            datasource = new AzureStorageDatasource();
-            repository = new KnowledgeRepository(datasource);
+        public OptionsController(KnowledgeRepository repository) {
+            this.repository = repository;
         }
 
         //

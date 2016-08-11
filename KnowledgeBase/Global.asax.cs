@@ -3,6 +3,7 @@ using KnowledgeBase.Data.Repository;
 using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -30,7 +31,12 @@ namespace KnowledgeBase {
         private void RegisterDependencies() {
             
             IUnityContainer container = new UnityContainer();
-            container.RegisterType<IDatasource, AzureStorageDatasource>();
+            container.RegisterType<IDatasource, JsonDataSource>(
+                new InjectionConstructor(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"App_Data\knowledge.json"))
+            );
+            container.RegisterType<KnowledgeRepository>(
+                new InjectionConstructor(container.Resolve<IDatasource>())
+            );
 
             DependencyResolver.SetResolver(new UnityResolver(container));            
         }

@@ -24,11 +24,12 @@ namespace KnowledgeBase.Data.Repository {
             File.WriteAllText(datasourcePath, knowledgeBaseJson, Encoding.UTF8);
         }
 
-        public string LoadData(){
-            if (!File.Exists(datasourcePath))
-                throw new FileNotFoundException();
-
-            return File.ReadAllText(datasourcePath, Encoding.UTF8);
+        public string LoadData(){            
+            using (FileStream stream = File.Open(datasourcePath, FileMode.OpenOrCreate, FileAccess.Read)) {
+                using (var reader = new StreamReader(stream, Encoding.UTF8)) {
+                    return reader.ReadToEnd();
+                }
+            }
         }
 
         private IList<Knowledge> JsonParse(string data) {

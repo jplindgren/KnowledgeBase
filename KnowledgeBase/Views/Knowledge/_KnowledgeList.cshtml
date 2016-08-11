@@ -28,11 +28,12 @@
             @foreach (var article in item.Articles) { 
                 <div class="col-md-4">
                     <div data-name="@article.Name.ToLower()" class="article well">
-                        <a class="pull-right" href="@Url.Action("remove", "knowledge")?id=@Html.Encode(@article.Name)" role="button">x</a>
+                        <a class="pull-right" href="@Url.Action("remove", "knowledge")?id=@Html.Encode(@article.Id)" role="button">x</a>
                         <h3>@article.Name</h3>
                         <small>@article.Description</small>
                         <p><a target="_blank" class="btn btn-default" href="@article.Link" role="button">Open &raquo;</a></p>
                         <span class="label label-primary pull-right">@item.Tag.Name</span>
+                        <input type="hidden" value=">@article.Id" />
                     </div>
                 </div>
             }
