@@ -3,4 +3,7 @@ solution: KnowledgeBase.sln
 install:
   - sudo apt-get install -y gtk-sharp2
   - nuget restore KnowledgeBase.sln
-  - nuget install xunit.runnner.console -Version 2.0.0 -OutputDirectory testrunner
+  - nuget install xunit.runners -Version 1.9.2 -OutputDirectory testrunner
+ script:
+   - xbuild /p:Configuration=Release KnowledgeBase.sln
+   - mono ./testrunner/xunit.runners.1.9.2/tools/xunit.console.clr4.exe ./KnowLedgeBase.Tests/bin/Release/KnowLedgeBase.Tests.dll
