@@ -1,6 +1,7 @@
 language: csharp
 solution: KnowledgeBase.sln
-install:  
+install:
+  - sudo apt-get install -y gtk-sharp2
   - nuget restore KnowledgeBase.sln
   - nuget install xunit.runner.console -Version 2.1.0 -OutputDirectory testrunner
 script:
