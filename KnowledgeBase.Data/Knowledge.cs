@@ -42,5 +42,9 @@ namespace KnowledgeBase.Data{
             Articles.Add(article);
             return true;
         }
+
+        public bool Empty() {
+            return !Articles.Any();
+        }
     } //class
 }
