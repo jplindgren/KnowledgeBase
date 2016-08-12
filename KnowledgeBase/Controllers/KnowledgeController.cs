@@ -38,12 +38,9 @@ namespace KnowledgeBase.Controllers{
             if (knowledgeBase == null)
                 knowledgeBase = new List<Knowledge>();
 
-            var existentKnowledge =  knowledgeBase.Where(x => x.Tag.Name == args.Tag).FirstOrDefault();
-            if (existentKnowledge == null) {
-                existentKnowledge = new Knowledge() { Tag = new Tag() { Name = args.Tag } };
-                knowledgeBase.Add(existentKnowledge);
-            }
-            existentKnowledge.AddArticle(new Article() { Id = Guid.NewGuid(), Description = args.Description, Link = args.Link, Name = args.Name } );
+            KnowledgeCollection collection = new KnowledgeCollection(knowledgeBase);
+            collection.AddArticle(args.Tag, new Article() { Id = Guid.NewGuid(), Description = args.Description, Link = args.Link, Name = args.Name });
+            
             repository.Save(knowledgeBase);
         }
 
@@ -57,16 +54,8 @@ namespace KnowledgeBase.Controllers{
             if (knowledgeBase == null)
                 knowledgeBase = new List<Knowledge>();
 
-            Knowledge knowledge = knowledgeBase.Where(x => x.ContainsArticle(articleId)).FirstOrDefault();
-            if (knowledge == null) {
-                throw new Exception("Knowledge not found");
-            }
-
-            knowledge.RemoveArticle(articleId);
-            if (knowledge.Articles.Count() == 0) {
-                knowledgeBase.Remove(knowledge);
-            }
-
+            KnowledgeCollection collection = new KnowledgeCollection(knowledgeBase);
+            collection.RemoveArticle(articleId);
             repository.Save(knowledgeBase);
             return RedirectToAction("Index");
         }
