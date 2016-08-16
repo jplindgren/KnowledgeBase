@@ -10,7 +10,7 @@ namespace KnowledgeBase.Models {
             this.Knowledges = new List<Knowledge>();
             this.Tags = new List<string>();
         }
-        public IList<Knowledge> Knowledges { get; set; }
-        public IList<string> Tags { get; set; }
+        public IEnumerable<Knowledge> Knowledges { get; set; }
+        public IEnumerable<string> Tags { get; set; }
     }
 }

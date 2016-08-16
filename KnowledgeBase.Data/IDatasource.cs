@@ -5,7 +5,7 @@ using System.Text;
 
 namespace KnowledgeBase.Data {
     public interface IDatasource {
-        IList<Knowledge> Load();
-        void Save(IList<Knowledge> knowledgeBase);
+        KnowledgeCollection Load();
+        void Save(KnowledgeCollection knowledgeBase);
     } //class
 }

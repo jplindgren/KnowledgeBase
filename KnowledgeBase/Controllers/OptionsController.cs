@@ -31,7 +31,7 @@ namespace KnowledgeBase.Controllers{
                 using (StreamReader reader = new StreamReader(restoreBackup.InputStream)) {
                     var json = reader.ReadToEnd();
                     var knowledge = JsonConvert.DeserializeObject<List<Knowledge>>(json);
-                    repository.Save(knowledge);
+                    repository.Save(new KnowledgeCollection(knowledge));
                 }
             }
             return RedirectToAction("Index" , "Knowledge");

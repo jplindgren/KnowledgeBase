@@ -19,12 +19,8 @@ namespace KnowledgeBase.Controllers{
         //
         // GET: /Tag/
         public JsonResult Index() {
-            IList<Knowledge> results = repository.Load();
-            var tags = new List<string>();
-            if (results != null) {
-                tags = results.Select(x => x.Tag.Name).ToList();
-            }
-            return Json(tags, JsonRequestBehavior.AllowGet);
+            KnowledgeCollection collection = repository.Load();            
+            return Json(collection.GetTags().Select(tag => tag.Name), JsonRequestBehavior.AllowGet);
         }
 
     } //class

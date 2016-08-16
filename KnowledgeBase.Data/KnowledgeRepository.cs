@@ -11,11 +11,11 @@ namespace KnowledgeBase.Data {
             this.datasource = dataSource;
         }
 
-        public IList<Knowledge> Load() {
+        public KnowledgeCollection Load() {
             return this.datasource.Load();
         }
 
-        public void Save(IList<Knowledge> knowledgeBase) {
+        public void Save(KnowledgeCollection knowledgeBase) {
             this.datasource.Save(knowledgeBase);
         }
     } //class

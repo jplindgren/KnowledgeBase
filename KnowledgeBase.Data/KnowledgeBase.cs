@@ -9,7 +9,10 @@ namespace KnowledgeBase.Data {
     public class KnowledgeCollection : IEnumerable<Knowledge>{
         private IList<Knowledge> knowledges;
         public KnowledgeCollection(IList<Knowledge> knowledges) {
-            this.knowledges = knowledges;
+            if (knowledges == null)
+                this.knowledges = new List<Knowledge>();
+            else
+                this.knowledges = knowledges;
         }
 
         public KnowledgeCollection() {
@@ -18,6 +21,12 @@ namespace KnowledgeBase.Data {
 
         public IEnumerator<Knowledge> GetEnumerator() {
             return this.knowledges.GetEnumerator();
+        }
+        public IEnumerable<Knowledge> GetKnowledges() {
+            return this.knowledges.AsEnumerable();
+        }
+        public IEnumerable<Tag> GetTags() {
+            return this.knowledges.Select(x => x.Tag);
         }
 
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() {

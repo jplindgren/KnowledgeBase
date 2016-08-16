@@ -34,14 +34,10 @@ namespace KnowledgeBase.Controllers{
         public void AddArticle(AddArticleEvtArgs args) {
             if (args == null || !args.IsValid())
                 throw new Exception("Invalid arguments");
-            IList<Knowledge> knowledgeBase = repository.Load();
-            if (knowledgeBase == null)
-                knowledgeBase = new List<Knowledge>();
-
-            KnowledgeCollection collection = new KnowledgeCollection(knowledgeBase);
+            KnowledgeCollection collection = repository.Load();
             collection.AddArticle(args.Tag, new Article() { Id = Guid.NewGuid(), Description = args.Description, Link = args.Link, Name = args.Name });
             
-            repository.Save(knowledgeBase);
+            repository.Save(collection);
         }
 
         //
@@ -49,24 +45,20 @@ namespace KnowledgeBase.Controllers{
         [HttpGet]
         public ActionResult Remove(string id) {
             var articleId = Guid.Parse(id);
-            
-            IList<Knowledge> knowledgeBase = repository.Load();
-            if (knowledgeBase == null)
-                knowledgeBase = new List<Knowledge>();
 
-            KnowledgeCollection collection = new KnowledgeCollection(knowledgeBase);
+            KnowledgeCollection collection = repository.Load();
             collection.RemoveArticle(articleId);
-            repository.Save(knowledgeBase);
+            repository.Save(collection);
+
             return RedirectToAction("Index");
         }
 
         private KnowledgeListViewModel GetKnowledgeListViewModel() {
-            IList<Knowledge> results = repository.Load();
+            KnowledgeCollection collection = repository.Load();
             var knowledgeListViewModel = new KnowledgeListViewModel();
-            if (results != null) {
-                knowledgeListViewModel.Knowledges = results;
-                knowledgeListViewModel.Tags = results.Select(x => x.Tag.Name).ToList();
-            }
+            
+            knowledgeListViewModel.Knowledges = collection.GetKnowledges();
+            knowledgeListViewModel.Tags = collection.GetTags().Select(tag => tag.Name);
             return knowledgeListViewModel;
         }
 

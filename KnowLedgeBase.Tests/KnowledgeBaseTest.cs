@@ -17,6 +17,21 @@ namespace KnowLedgeBase.Tests {
             Assert.Throws(typeof(ArgumentNullException), () => knowledges.AddArticle("aTag", nullArticle)); 
         }
 
+        [Fact()]
+        public void KnowledgeList_Should_Never_Be_Null() {
+            KnowledgeCollection knowledges = new KnowledgeCollection(null);
+            Assert.NotNull(knowledges.GetKnowledges());
+            Assert.Empty(knowledges.GetKnowledges());
+        }
+
+        [Theory(), AutoData()]
+        public void Should_Return_All_Tags(IList<Knowledge> knowledges) {
+            var tags = knowledges.Select(x => x.Tag);
+            KnowledgeCollection collection = new KnowledgeCollection(knowledges);
+            
+            Assert.Equal(tags, collection.GetTags());
+        }
+
         [Theory(), AutoData()]
         public void Should_Create_NewKnowledge_If_Article_Tag_Does_Not_Exists(KnowledgeCollection knowledges, Article newArticle) {
             string aTag = "Inexistent Tag";

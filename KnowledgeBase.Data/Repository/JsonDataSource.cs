@@ -13,14 +13,14 @@ namespace KnowledgeBase.Data.Repository {
         public JsonDataSource(string datasourcePath) {
             this.datasourcePath = datasourcePath;
         }
-        public IList<Knowledge> Load() {
+        public KnowledgeCollection Load() {
             string data = LoadData();
             var result = JsonParse(data);
-            return result;
+            return new KnowledgeCollection(result);
         }
 
-        public void Save(IList<Knowledge> knowledgeBase) {
-            var knowledgeBaseJson = JsonParse(knowledgeBase);
+        public void Save(KnowledgeCollection knowledgeCollection) {
+            var knowledgeBaseJson = JsonParse(knowledgeCollection.GetKnowledges());
             File.WriteAllText(datasourcePath, knowledgeBaseJson, Encoding.UTF8);
         }
 
@@ -37,7 +37,7 @@ namespace KnowledgeBase.Data.Repository {
             return result;
         }
 
-        private string JsonParse(IList<Knowledge> knowledgeBase) {
+        private string JsonParse(IEnumerable<Knowledge> knowledgeBase) {
             var result = JsonConvert.SerializeObject(knowledgeBase, Formatting.Indented);
             return result;
         }
