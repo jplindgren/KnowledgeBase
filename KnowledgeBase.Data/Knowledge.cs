@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace KnowledgeBase.Data{
     public class Knowledge{
         public Tag Tag { get; set; }
+        public Guid Id { get; set; }
         public IList<Article> Articles { get; set; }
 
         public bool ContainsArticle(Guid articleId) {

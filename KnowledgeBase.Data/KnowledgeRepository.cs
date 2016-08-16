@@ -11,12 +11,16 @@ namespace KnowledgeBase.Data {
             this.datasource = dataSource;
         }
 
-        public KnowledgeCollection Load() {
+        public IEnumerable<Article> Load() {
             return this.datasource.Load();
         }
 
-        public void Save(KnowledgeCollection knowledgeBase) {
-            this.datasource.Save(knowledgeBase);
+        public void Save(Article article) {
+            this.datasource.Save(article);
+        }
+
+        public void Remove(Article article) {
+            this.datasource.Remove(article);
         }
     } //class
 }

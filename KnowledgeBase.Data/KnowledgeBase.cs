@@ -33,12 +33,13 @@ namespace KnowledgeBase.Data {
             return this.knowledges.GetEnumerator();
         }
         
-        public void AddArticle(string tag, Article article) {
+        public Knowledge AddArticle(string tag, Article article) {
             var knowledge = knowledges.Where(x => x.Tag.Name == tag).FirstOrDefault();
             if (knowledge == null) {
                 knowledge = CreateKnowledgeForTag(tag);
             }
             knowledge.AddArticle(article);
+            return knowledge;
         }
 
         public void RemoveArticle(Guid articleId) {

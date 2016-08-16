@@ -10,17 +10,15 @@ using System.Web.Mvc;
 namespace KnowledgeBase.Controllers{
     public class TagController : Controller{
         KnowledgeRepository repository;
-        public TagController(KnowledgeRepository repository) {            
-            //dataSource = new AzureStorageDatasource();
-            //repository = new KnowledgeRepository(dataSource);
+        public TagController(KnowledgeRepository repository) {                        
             this.repository = repository;
         }
 
         //
         // GET: /Tag/
         public JsonResult Index() {
-            KnowledgeCollection collection = repository.Load();            
-            return Json(collection.GetTags().Select(tag => tag.Name), JsonRequestBehavior.AllowGet);
+            IEnumerable<Article> collection = repository.Load();            
+            return Json(collection.Select(x => x.Tag.Name), JsonRequestBehavior.AllowGet);
         }
 
     } //class

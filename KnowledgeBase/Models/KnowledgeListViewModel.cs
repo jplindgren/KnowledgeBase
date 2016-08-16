@@ -5,12 +5,12 @@ using System.Linq;
 using System.Web;
 
 namespace KnowledgeBase.Models {
-    public class KnowledgeListViewModel {
-        public KnowledgeListViewModel() {
-            this.Knowledges = new List<Knowledge>();
-            this.Tags = new List<string>();
+    public class ArticleListViewModel {
+        public ArticleListViewModel() {
+            this.Articles = new List<Article>();
+            this.Tags = new List<Tag>();
         }
-        public IEnumerable<Knowledge> Knowledges { get; set; }
-        public IEnumerable<string> Tags { get; set; }
+        public IEnumerable<Article> Articles { get; set; }
+        public IEnumerable<Tag> Tags { get; set; }
     }
 }

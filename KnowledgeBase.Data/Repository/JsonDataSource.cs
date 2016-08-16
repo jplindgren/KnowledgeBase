@@ -13,15 +13,27 @@ namespace KnowledgeBase.Data.Repository {
         public JsonDataSource(string datasourcePath) {
             this.datasourcePath = datasourcePath;
         }
-        public KnowledgeCollection Load() {
+        public IEnumerable<Article> Load() {
             string data = LoadData();
             var result = JsonParse(data);
-            return new KnowledgeCollection(result);
+            return result;
         }
 
-        public void Save(KnowledgeCollection knowledgeCollection) {
-            var knowledgeBaseJson = JsonParse(knowledgeCollection.GetKnowledges());
-            File.WriteAllText(datasourcePath, knowledgeBaseJson, Encoding.UTF8);
+        public void Save(Article article) {
+            string data = LoadData();
+            var articles = JsonParse(data);
+            articles = articles.Concat(new Article[] { article });
+
+            var articlesJson = JsonParse(articles);
+            File.WriteAllText(datasourcePath, articlesJson, Encoding.UTF8);
+        }
+
+        public void Remove(Article article) {
+            string data = LoadData();
+            var articles = JsonParse(data);
+
+            var articlesJson = JsonParse(articles.Where(x => x.Id != article.Id).ToList());
+            File.WriteAllText(datasourcePath, articlesJson, Encoding.UTF8);
         }
 
         public string LoadData(){            
@@ -32,13 +44,13 @@ namespace KnowledgeBase.Data.Repository {
             }
         }
 
-        private IList<Knowledge> JsonParse(string data) {
-            var result = JsonConvert.DeserializeObject<List<Knowledge>>(data);
+        private IEnumerable<Article> JsonParse(string data) {
+            var result = JsonConvert.DeserializeObject<List<Article>>(data);
             return result;
         }
 
-        private string JsonParse(IEnumerable<Knowledge> knowledgeBase) {
-            var result = JsonConvert.SerializeObject(knowledgeBase, Formatting.Indented);
+        private string JsonParse(IEnumerable<Article> articles) {
+            var result = JsonConvert.SerializeObject(articles, Formatting.Indented);
             return result;
         }
         

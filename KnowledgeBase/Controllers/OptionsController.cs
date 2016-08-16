@@ -27,13 +27,13 @@ namespace KnowledgeBase.Controllers{
         // POST: /Options/Load
         [HttpPost]
         public ActionResult Load(HttpPostedFileBase restoreBackup) {
-            if (restoreBackup != null && restoreBackup.ContentLength > 0) {
-                using (StreamReader reader = new StreamReader(restoreBackup.InputStream)) {
-                    var json = reader.ReadToEnd();
-                    var knowledge = JsonConvert.DeserializeObject<List<Knowledge>>(json);
-                    repository.Save(new KnowledgeCollection(knowledge));
-                }
-            }
+            //if (restoreBackup != null && restoreBackup.ContentLength > 0) {
+            //    using (StreamReader reader = new StreamReader(restoreBackup.InputStream)) {
+            //        var json = reader.ReadToEnd();
+            //        var articles = JsonConvert.DeserializeObject<List<Article>>(json);
+            //        repository.Save(articles);
+            //    }
+            //}
             return RedirectToAction("Index" , "Knowledge");
         }
 
