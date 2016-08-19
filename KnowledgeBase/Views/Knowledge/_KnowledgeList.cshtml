@@ -1,9 +1,9 @@
-﻿@model KnowledgeBase.Models.KnowledgeListViewModel
+﻿@model KnowledgeBase.Models.ArticleListViewModel
 
 @{
-    List<List<string>> tagsGroups = Model.Tags.Select((x, i) => new { Index = i, Value = x })
+    List<List<string>> tagsGroups = Model.GroupedArticles.Keys.Select((x, i) => new { Index = i, Value = x })
                                                             .GroupBy(x => x.Index / 5)
-                                                            .Select(x => x.Select(y => y.Value).ToList())
+                                                            .Select(x => x.Select(y => y.Value.Name).ToList())
                                                             .ToList();
 }
 
@@ -17,15 +17,15 @@
 
 
 <!-- Example row of columns -->
-@foreach (var item in Model.Knowledges) {
+@foreach (var item in Model.GroupedArticles) {
     <div class="knowledge">
         <h2 class="text-center">
-            <a href="#" role="button" id="@item.Tag.Name" class="openAllLinks">@item.Tag.Name &raquo;</a>
+            <a href="#" role="button" id="@item.Key.Name" class="openAllLinks">@item.Key.Name &raquo;</a>
         </h2> 
         
     
         <div class="row">
-            @foreach (var article in item.Articles) { 
+            @foreach (var article in item.Value) { 
                 <div class="col-md-4">
                     <div data-name="@article.Name.ToLower()" class="article well">
                         <a class="pull-right" href="@Url.Action("remove", "knowledge")?id=@Html.Encode(@article.Id)" role="button">
@@ -34,7 +34,7 @@
                         <h3>@article.Name</h3>
                         <small>@article.Description</small>
                         <p><a target="_blank" class="btn btn-default" href="@article.Link" role="button">Open &raquo;</a></p>
-                        <span class="label label-primary pull-right">@item.Tag.Name</span>
+                        <span class="label label-primary pull-right">@item.Key.Name</span>
                         <input type="hidden" value=">@article.Id" />
                     </div>
                 </div>

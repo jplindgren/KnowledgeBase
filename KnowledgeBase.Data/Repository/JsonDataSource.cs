@@ -28,11 +28,11 @@ namespace KnowledgeBase.Data.Repository {
             File.WriteAllText(datasourcePath, articlesJson, Encoding.UTF8);
         }
 
-        public void Remove(Article article) {
+        public void Remove(Guid articleId) {
             string data = LoadData();
             var articles = JsonParse(data);
 
-            var articlesJson = JsonParse(articles.Where(x => x.Id != article.Id).ToList());
+            var articlesJson = JsonParse(articles.Where(x => x.Id != articleId).ToList());
             File.WriteAllText(datasourcePath, articlesJson, Encoding.UTF8);
         }
 

@@ -1,19 +1,15 @@
 ﻿using KnowledgeBase.Data;
-using KnowledgeBase.Data.Repository;
 using KnowledgeBase.Models;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 
 namespace KnowledgeBase.Controllers{
     public class KnowledgeController : Controller{
         KnowledgeRepository repository;
         public KnowledgeController(KnowledgeRepository repository) {
-            this.repository = repository;
+            this.repository = repository;            
         }
 
         //
@@ -43,21 +39,23 @@ namespace KnowledgeBase.Controllers{
         [HttpGet]
         public ActionResult Remove(string id) {
             var articleId = Guid.Parse(id);
-
-            IEnumerable<Article> collection = repository.Load();
-            var articleToRemove = collection.Where(x => x.Id == articleId).First();
-            repository.Save(articleToRemove);
+            repository.Remove(articleId);
 
             return RedirectToAction("Index");
         }
 
         private ArticleListViewModel GetArticleListViewModel() {
             IEnumerable<Article> collection = repository.Load();
-            var knowledgeListViewModel = new ArticleListViewModel();
-            
-            knowledgeListViewModel.Articles = collection;
-            knowledgeListViewModel.Tags = collection.Select(x => x.Tag);
-            return knowledgeListViewModel;
+            var articleListViewModel = new ArticleListViewModel();
+
+            articleListViewModel.GroupedArticles = collection.GroupBy(x => x.Tag).ToDictionary(x => x.Key, y => y.AsEnumerable());
+
+            List<List<string>> tagsGroups = articleListViewModel.GroupedArticles.Keys.Select((x, i) => new { Index = i, Value = x })
+                                                            .GroupBy(x => x.Index / 5)
+                                                            .Select(x => x.Select(y => y.Value.Name).ToList())
+                                                            .ToList();
+
+            return articleListViewModel;
         }
 
     } //class

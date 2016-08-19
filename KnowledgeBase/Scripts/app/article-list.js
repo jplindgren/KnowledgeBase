@@ -32,7 +32,7 @@
 
     Application.ArticleList.prototype.reload = function reload() {
         this.bootstrapContainer.html('');
-        this.ajaxContainer.load('Knowledge/GetKnowledgeList');
+        this.ajaxContainer.load('/Knowledge/GetKnowledgeList');
     }
 
     Application.ArticleList.prototype.filter = function filter(content) {

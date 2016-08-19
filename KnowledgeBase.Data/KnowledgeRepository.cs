@@ -12,15 +12,15 @@ namespace KnowledgeBase.Data {
         }
 
         public IEnumerable<Article> Load() {
-            return this.datasource.Load();
+            return this.datasource.Load().ToList();
         }
 
         public void Save(Article article) {
             this.datasource.Save(article);
         }
 
-        public void Remove(Article article) {
-            this.datasource.Remove(article);
+        public void Remove(Guid articleId) {
+            this.datasource.Remove(articleId);
         }
     } //class
 }

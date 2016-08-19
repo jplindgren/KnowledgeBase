@@ -18,7 +18,7 @@ namespace KnowledgeBase.Controllers{
         // GET: /Tag/
         public JsonResult Index() {
             IEnumerable<Article> collection = repository.Load();            
-            return Json(collection.Select(x => x.Tag.Name), JsonRequestBehavior.AllowGet);
+            return Json(collection.Select(x => x.Tag.Name).Distinct(), JsonRequestBehavior.AllowGet);
         }
 
     } //class

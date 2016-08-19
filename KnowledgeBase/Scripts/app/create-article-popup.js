@@ -3,7 +3,7 @@
         this.popupContainer = popupContainer;
         this.openButton = this.popupContainer.find('#openAddArticlePopup');
         this.form = $(this.popupContainer.find('form')[0]);
-        this.action = "Knowledge/AddArticle";
+        this.action = "/Knowledge/AddArticle";
         this.articleList = articleList;
 
         this.init();
@@ -26,7 +26,7 @@
         this.form.on('submit', this.addArticle.bind(this));
     }
 
-    Application.CreateArticlePopup.prototype.addArticle = function (event) {
+    Application.CreateArticlePopup.prototype.addArticle = function (event) {        
         var that = this;
         event.preventDefault();
         event.stopPropagation();
@@ -47,6 +47,6 @@
 
     Application.CreateArticlePopup.prototype.clear = function () {
         this.form[0].reset();
-        this.togglePopup();
+        //this.togglePopup();
     }
 })(jQuery, radio, Application);

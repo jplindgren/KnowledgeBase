@@ -7,10 +7,9 @@ using System.Web;
 namespace KnowledgeBase.Models {
     public class ArticleListViewModel {
         public ArticleListViewModel() {
-            this.Articles = new List<Article>();
-            this.Tags = new List<Tag>();
+            this.GroupedArticles = new Dictionary<Tag, IEnumerable<Article>>();
         }
-        public IEnumerable<Article> Articles { get; set; }
-        public IEnumerable<Tag> Tags { get; set; }
+        
+        public IDictionary<Tag, IEnumerable<Article>> GroupedArticles { get; set; }
     }
 }

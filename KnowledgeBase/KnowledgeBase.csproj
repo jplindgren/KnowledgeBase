@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -257,6 +258,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\KnowledgeBase.Data.AzureTableStore\KnowledgeBase.Data.AzureTableStore.csproj">
+      <Project>{d23d8911-523c-414b-bbe1-914dc84871e3}</Project>
+      <Name>KnowledgeBase.Data.AzureTableStore</Name>
+    </ProjectReference>
     <ProjectReference Include="..\KnowledgeBase.Data\KnowledgeBase.Data.csproj">
       <Project>{4530cf7b-7b4a-456d-81bc-96f6c2d7aa08}</Project>
       <Name>KnowledgeBase.Data</Name>

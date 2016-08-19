@@ -1,4 +1,4 @@
-﻿@model KnowledgeBase.Models.KnowledgeListViewModel
+﻿@model KnowledgeBase.Models.ArticleListViewModel
 
 @{
     ViewBag.Title = "Knowledge";
@@ -6,8 +6,8 @@
 
 <!-- MasterPage Menu ADD button auto complete  -->
 <datalist id="tags">
-    @foreach(var tag in Model.Tags){
-        <option value="@tag" />    
+    @foreach(var tag in Model.GroupedArticles.Keys) {
+        <option value="@tag.Name" />    
     }
 </datalist>
 
