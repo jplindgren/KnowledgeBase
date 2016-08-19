@@ -13,8 +13,10 @@ namespace KnowledgeBase.Data.AzureTableStore{
         public const string ENDPOINT_ENVIROMENTVARIABLE = "MYCONTENT_DOCUMENTDB_ENDPOINT";
         public const string PRIMARYKEY_ENVIROMENTVARIABLE = "MYCONTENT_DOCUMENTDB_KEY";
         private DocumentClient client;
+        private string collectionName;
+        private string dbname;
 
-        public AzureDocumentDBDatasource(string endpoint, string key) {
+        public AzureDocumentDBDatasource(string endpoint, string key, string dbName, string collectionName) {
             if (string.IsNullOrEmpty(endpoint))
                 throw new AzureDocumentDbConfigurationException(string.Format("Azure DocumentDb Configuration failed. 'Endpoint' property cannot be null. Check if the enviroment variable {0} is correctly set in your enviroment", ENDPOINT_ENVIROMENTVARIABLE));
             if (string.IsNullOrEmpty(key))
@@ -22,33 +24,38 @@ namespace KnowledgeBase.Data.AzureTableStore{
 
             this.client = new DocumentClient(new Uri(endpoint), key);
 
-            var t1 = CreateDatabaseIfNotExists("knowledge");
-            t1.Wait();
-            var t2 = CreateDocumentCollectionIfNotExists("knowledge", "articles");
-            t2.Wait();
+            this.dbname = dbName;
+            this.collectionName = collectionName;
+
+            AsyncHelpers.RunSync(() => CreateDatabaseIfNotExists(this.dbname));
+            AsyncHelpers.RunSync(() => CreateDocumentCollectionIfNotExists(this.dbname, this.collectionName));
+            //var t1 = CreateDatabaseIfNotExists(this.dbname);
+            //t1.Wait();
+            //var t2 = CreateDocumentCollectionIfNotExists(this.dbname, this.collectionName);
+            //t2.Wait();
         }
 
-        //public async Task Prepare() {
-        //    await CreateDatabaseIfNotExists("knowledge");
-        //    await CreateDocumentCollectionIfNotExists("knowledge", "articles");
-        //}
+        public async Task Prepare() {
+            await CreateDatabaseIfNotExists(this.dbname);
+            await CreateDocumentCollectionIfNotExists(this.dbname, collectionName);
+        }
 
         public IEnumerable<Article> Load() {
             // Set some common query options
             FeedOptions queryOptions = new FeedOptions { MaxItemCount = 500 };
             // Here we find the Andersen family via its LastName
             IQueryable<Article> articleQuery = this.client.CreateDocumentQuery<Article>(
-                    UriFactory.CreateDocumentCollectionUri("knowledge", "articles"), queryOptions);
+                    UriFactory.CreateDocumentCollectionUri(this.dbname, this.collectionName), queryOptions);
                         //.Where(f => f.Name == "zzzz");
             return articleQuery;
         }
 
-        public void Save(Article article) {
-            Task.Run(() => client.UpsertDocumentAsync(UriFactory.CreateDocumentCollectionUri("knowledge", "articles"), article));
+        public async Task Save(Article article) {
+            var what = await client.UpsertDocumentAsync(UriFactory.CreateDocumentCollectionUri(this.dbname, this.collectionName), article);
         }
 
-        public void Remove(Guid articleId) {
-            Task.Run(async () => await this.client.DeleteDocumentAsync(UriFactory.CreateDocumentUri("knowledge", "articles", articleId.ToString())));
+        public async Task Remove(Guid articleId) {
+            var what = await this.client.DeleteDocumentAsync(UriFactory.CreateDocumentUri(this.dbname, this.collectionName, articleId.ToString()));            
         }
 
 

@@ -40,9 +40,11 @@ namespace KnowledgeBase {
                 new InjectionFactory(x => 
                     new AzureDocumentDBDatasource(
                         Environment.GetEnvironmentVariable(AzureDocumentDBDatasource.ENDPOINT_ENVIROMENTVARIABLE, EnvironmentVariableTarget.User) ?? Environment.GetEnvironmentVariable(AzureDocumentDBDatasource.ENDPOINT_ENVIROMENTVARIABLE, EnvironmentVariableTarget.Machine), 
-                        Environment.GetEnvironmentVariable(AzureDocumentDBDatasource.PRIMARYKEY_ENVIROMENTVARIABLE, EnvironmentVariableTarget.User) ?? Environment.GetEnvironmentVariable(AzureDocumentDBDatasource.PRIMARYKEY_ENVIROMENTVARIABLE, EnvironmentVariableTarget.Machine))
+                        Environment.GetEnvironmentVariable(AzureDocumentDBDatasource.PRIMARYKEY_ENVIROMENTVARIABLE, EnvironmentVariableTarget.User) ?? Environment.GetEnvironmentVariable(AzureDocumentDBDatasource.PRIMARYKEY_ENVIROMENTVARIABLE, EnvironmentVariableTarget.Machine),
+                        "knowledge", "articles")
                 )
             );
+
             container.RegisterType<KnowledgeRepository>(
                 new InjectionConstructor(container.Resolve<IDatasource>())
             );

@@ -19,21 +19,23 @@ namespace KnowledgeBase.Data.Repository {
             return result;
         }
 
-        public void Save(Article article) {
+        public Task Save(Article article) {
             string data = LoadData();
             var articles = JsonParse(data);
             articles = articles.Concat(new Article[] { article });
 
             var articlesJson = JsonParse(articles);
             File.WriteAllText(datasourcePath, articlesJson, Encoding.UTF8);
+            return Task.FromResult(0);
         }
 
-        public void Remove(Guid articleId) {
+        public Task Remove(Guid articleId) {
             string data = LoadData();
             var articles = JsonParse(data);
 
             var articlesJson = JsonParse(articles.Where(x => x.Id != articleId).ToList());
             File.WriteAllText(datasourcePath, articlesJson, Encoding.UTF8);
+            return Task.FromResult(0);
         }
 
         public string LoadData(){            
