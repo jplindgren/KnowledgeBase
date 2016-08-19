@@ -32,18 +32,18 @@ namespace KnowledgeBase {
         private void RegisterDependencies() {
             
             IUnityContainer container = new UnityContainer();
-            //container.RegisterType<IDatasource, JsonDataSource>(
-            //    new InjectionConstructor(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"App_Data\knowledge.json"))
-            //);            
-
-            container.RegisterType<IDatasource, AzureDocumentDBDatasource>(
-                new InjectionFactory(x => 
-                    new AzureDocumentDBDatasource(
-                        Environment.GetEnvironmentVariable(AzureDocumentDBDatasource.ENDPOINT_ENVIROMENTVARIABLE, EnvironmentVariableTarget.User) ?? Environment.GetEnvironmentVariable(AzureDocumentDBDatasource.ENDPOINT_ENVIROMENTVARIABLE, EnvironmentVariableTarget.Machine), 
-                        Environment.GetEnvironmentVariable(AzureDocumentDBDatasource.PRIMARYKEY_ENVIROMENTVARIABLE, EnvironmentVariableTarget.User) ?? Environment.GetEnvironmentVariable(AzureDocumentDBDatasource.PRIMARYKEY_ENVIROMENTVARIABLE, EnvironmentVariableTarget.Machine),
-                        "knowledge", "articles")
-                )
+            container.RegisterType<IDatasource, JsonDataSource>(
+                new InjectionConstructor(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"App_Data\knowledge.json"))
             );
+
+            //container.RegisterType<IDatasource, AzureDocumentDBDatasource>(
+            //    new InjectionFactory(x => 
+            //        new AzureDocumentDBDatasource(
+            //            Environment.GetEnvironmentVariable(AzureDocumentDBDatasource.ENDPOINT_ENVIROMENTVARIABLE, EnvironmentVariableTarget.User) ?? Environment.GetEnvironmentVariable(AzureDocumentDBDatasource.ENDPOINT_ENVIROMENTVARIABLE, EnvironmentVariableTarget.Machine), 
+            //            Environment.GetEnvironmentVariable(AzureDocumentDBDatasource.PRIMARYKEY_ENVIROMENTVARIABLE, EnvironmentVariableTarget.User) ?? Environment.GetEnvironmentVariable(AzureDocumentDBDatasource.PRIMARYKEY_ENVIROMENTVARIABLE, EnvironmentVariableTarget.Machine),
+            //            "knowledge", "articles")
+            //    )
+            //);
 
             container.RegisterType<KnowledgeRepository>(
                 new InjectionConstructor(container.Resolve<IDatasource>())
