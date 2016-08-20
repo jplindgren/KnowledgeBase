@@ -9,3 +9,5 @@ script:
    - mono ./testrunner/xunit.runner.console.2.1.0/tools/xunit.console.exe ./KnowLedgeBase.Tests/bin/Release/KnowLedgeBase.Tests.dll
    - chmod a+x ./build-extension.sh
    - ./build-extension.sh
+deploy:
+  provider: azure_web_apps
