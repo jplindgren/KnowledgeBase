@@ -34,12 +34,20 @@
             url: this.action,
             type: 'POST',
             data: this.form.serialize(),
-            success: function (result) {
-                that.articleList.reload();
-                that.clear();
-                toastr.success('Operation Complete', 'Article added with success');
+            accepts: "application/json; charset=utf-8",
+            success: function (result) {                
+                if (!result.HasErrors) {
+                    that.articleList.reload();
+                    that.clear();
+                    toastr.success('Operation Complete', 'Article added with success');
+                } else {
+                    result.ErrorFields.forEach(function (item) {
+                        var selector = 'input[id=' + item + ']';
+                        that.form.find(selector).closest('div').addClass('has-error');                        
+                    });
+                }                
             },
-            error: function () {
+            error: function (xhr, ajaxOptions, thrownError) {
                 toastr.error('Sorry...', 'An error ocorred. Please retry later.');
             }
         });
@@ -47,6 +55,7 @@
 
     Application.CreateArticlePopup.prototype.clear = function () {
         this.form[0].reset();
+        this.form.find('.form-group').removeClass('has-error');        
         //this.togglePopup();
     }
 })(jQuery, radio, Application);

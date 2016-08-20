@@ -2,7 +2,9 @@
 using KnowledgeBase.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace KnowledgeBase.Controllers{
@@ -26,12 +28,24 @@ namespace KnowledgeBase.Controllers{
 
         //
         // POST: /Knowledge/
-        [HttpPost]
-        public void AddArticle(AddArticleEvtArgs args) {
-            if (args == null || !args.IsValid())
-                throw new Exception("Invalid arguments");            
-            
-            repository.Save(new Article() { Id = Guid.NewGuid(), Description = args.Description, Link = args.Link, Name = args.Name, Tag = new Tag(args.Tag) });
+        [HttpPost]        
+        public JsonResult AddArticle(AddArticleEvtArgs args) {
+            if (args == null)
+                throw new Exception("Invalid arguments");
+
+            if (ModelState.IsValid) {
+                repository.Save(new Article() { Id = Guid.NewGuid(), Description = args.Description, Link = args.Link, Name = args.Name, Tag = new Tag(args.Tag) });
+            }           
+
+            var modelStateErrors = ModelState.Where(x => x.Value.Errors.Count > 0);
+            var allErrors = modelStateErrors.SelectMany(v => v.Value.Errors);
+            var allFieldErrors = modelStateErrors.Select(x => x.Key.ToLower());
+
+            return Json(new {
+                HasErrors = allErrors.Any(),
+                Errors = allErrors.Select(x => x.ErrorMessage).ToList(),
+                ErrorFields = allFieldErrors
+            });
         }
 
         //
@@ -61,9 +75,18 @@ namespace KnowledgeBase.Controllers{
     } //class
 
     public class AddArticleEvtArgs {
+        [Required]
         public string Tag { get; set; }
+
+        [Required]
         public string Name { get; set; }
+
+        [Required]
+        [StringLength(2048)]
+        [Url()]
         public string Link { get; set; }
+
+        [StringLength(5000)]
         public string Description { get; set; }
 
         public bool IsValid() { 
