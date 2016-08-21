@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeBase", "KnowledgeBase\KnowledgeBase.csproj", "{24F95BA4-DC0F-4581-9CC2-BACBC130719E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D23D8911-523C-414B-BBE1-914DC84871E3} = {D23D8911-523C-414B-BBE1-914DC84871E3}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeBase.Data", "KnowledgeBase.Data\KnowledgeBase.Data.csproj", "{4530CF7B-7B4A-456D-81BC-96F6C2D7AA08}"
 EndProject
