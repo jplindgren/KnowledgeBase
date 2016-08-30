@@ -48,12 +48,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Article.cs" />
+    <Compile Include="CustomUser.cs" />
     <Compile Include="Exceptions\ArticleNotFoundException.cs" />
     <Compile Include="IDatasource.cs" />
+    <Compile Include="IEntity.cs" />
     <Compile Include="Repository\JsonDataSource.cs" />
     <Compile Include="KnowledgeRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tag.cs" />
+    <Compile Include="UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace KnowledgeBase.Data {
     public class KnowledgeRepository {
-        public IDatasource datasource { get; set; }
-        public KnowledgeRepository(IDatasource dataSource) {
+        public IDatasource<Article> datasource { get; set; }
+        public KnowledgeRepository(IDatasource<Article> dataSource) {
             this.datasource = dataSource;
         }
 

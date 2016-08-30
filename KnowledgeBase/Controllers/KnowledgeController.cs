@@ -1,13 +1,26 @@
 ﻿using KnowledgeBase.Data;
 using KnowledgeBase.Models;
+using Microsoft.Owin.Security;
+using MyKnowledge.Authentication;
+using MyKnowledge.Authentication.Model;
+using Octokit;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace KnowledgeBase.Controllers{
+    public class AuthViewModel {
+        public string Email { get; set; }
+        public string Password { get; set; }
+    }
+
     public class KnowledgeController : Controller{
         KnowledgeRepository repository;
         public KnowledgeController(KnowledgeRepository repository) {

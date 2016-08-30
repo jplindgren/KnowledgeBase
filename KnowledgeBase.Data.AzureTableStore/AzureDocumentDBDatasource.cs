@@ -9,18 +9,16 @@ using Newtonsoft.Json;
 using System.Threading.Tasks;
 
 namespace KnowledgeBase.Data.AzureTableStore{
-    public class AzureDocumentDBDatasource : IDatasource {
-        public const string ENDPOINT_ENVIROMENTVARIABLE = "MYCONTENT_DOCUMENTDB_ENDPOINT";
-        public const string PRIMARYKEY_ENVIROMENTVARIABLE = "MYCONTENT_DOCUMENTDB_KEY";
+    public class AzureDocumentDBDatasource<T> : IDatasource<T> where T : IEntity {
         private DocumentClient client;
         private string collectionName;
         private string dbname;
 
         public AzureDocumentDBDatasource(string endpoint, string key, string dbName, string collectionName) {
             if (string.IsNullOrEmpty(endpoint))
-                throw new AzureDocumentDbConfigurationException(string.Format("Azure DocumentDb Configuration failed. 'Endpoint' property cannot be null. Check if the enviroment variable {0} is correctly set in your enviroment", ENDPOINT_ENVIROMENTVARIABLE));
+                throw new AzureDocumentDbConfigurationException(string.Format("Azure DocumentDb Configuration failed. 'Endpoint' property cannot be null. Check if the enviroment variable {0} is correctly set in your enviroment", Config.ENDPOINT_ENVIROMENTVARIABLE));
             if (string.IsNullOrEmpty(key))
-                throw new AzureDocumentDbConfigurationException(string.Format("Azure DocumentDb Configuration failed. 'PrimaryKey' property cannot be null. Check if the enviroment variable {0} is correctly set in your enviroment", PRIMARYKEY_ENVIROMENTVARIABLE));
+                throw new AzureDocumentDbConfigurationException(string.Format("Azure DocumentDb Configuration failed. 'PrimaryKey' property cannot be null. Check if the enviroment variable {0} is correctly set in your enviroment", Config.PRIMARYKEY_ENVIROMENTVARIABLE));
 
             this.client = new DocumentClient(new Uri(endpoint), key);
 
@@ -28,11 +26,7 @@ namespace KnowledgeBase.Data.AzureTableStore{
             this.collectionName = collectionName;
 
             AsyncHelpers.RunSync(() => CreateDatabaseIfNotExists(this.dbname));
-            AsyncHelpers.RunSync(() => CreateDocumentCollectionIfNotExists(this.dbname, this.collectionName));
-            //var t1 = CreateDatabaseIfNotExists(this.dbname);
-            //t1.Wait();
-            //var t2 = CreateDocumentCollectionIfNotExists(this.dbname, this.collectionName);
-            //t2.Wait();
+            AsyncHelpers.RunSync(() => CreateDocumentCollectionIfNotExists(this.dbname, this.collectionName));            
         }
 
         public async Task Prepare() {
@@ -40,22 +34,22 @@ namespace KnowledgeBase.Data.AzureTableStore{
             await CreateDocumentCollectionIfNotExists(this.dbname, collectionName);
         }
 
-        public IEnumerable<Article> Load() {
+        public IEnumerable<T> Load() {
             // Set some common query options
             FeedOptions queryOptions = new FeedOptions { MaxItemCount = 500 };
             // Here we find the Andersen family via its LastName
-            IQueryable<Article> articleQuery = this.client.CreateDocumentQuery<Article>(
+            IQueryable<T> articleQuery = this.client.CreateDocumentQuery<T>(
                     UriFactory.CreateDocumentCollectionUri(this.dbname, this.collectionName), queryOptions);
                         //.Where(f => f.Name == "zzzz");
             return articleQuery;
         }
 
-        public async Task Save(Article article) {
-            var what = await client.UpsertDocumentAsync(UriFactory.CreateDocumentCollectionUri(this.dbname, this.collectionName), article);
+        public async Task Save(T entity) {
+            var what = await client.UpsertDocumentAsync(UriFactory.CreateDocumentCollectionUri(this.dbname, this.collectionName), entity);
         }
 
-        public async Task Remove(Guid articleId) {
-            var what = await this.client.DeleteDocumentAsync(UriFactory.CreateDocumentUri(this.dbname, this.collectionName, articleId.ToString()));            
+        public async Task Remove(Guid id) {
+            var what = await this.client.DeleteDocumentAsync(UriFactory.CreateDocumentUri(this.dbname, this.collectionName, id.ToString()));            
         }
 
 
