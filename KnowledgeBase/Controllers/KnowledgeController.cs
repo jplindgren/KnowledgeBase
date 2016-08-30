@@ -15,13 +15,9 @@ using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Security;
 
-namespace KnowledgeBase.Controllers{
-    public class AuthViewModel {
-        public string Email { get; set; }
-        public string Password { get; set; }
-    }
+namespace KnowledgeBase.Controllers{ 
 
-    public class KnowledgeController : Controller{
+    public class KnowledgeController : BaseController {
         KnowledgeRepository repository;
         public KnowledgeController(KnowledgeRepository repository) {
             this.repository = repository;            
@@ -33,6 +29,7 @@ namespace KnowledgeBase.Controllers{
             return View(GetArticleListViewModel());
         }
 
+       
         [HttpGet]
         public ActionResult GetKnowledgeList() {
             var result = GetArticleListViewModel();
@@ -47,7 +44,12 @@ namespace KnowledgeBase.Controllers{
                 throw new Exception("Invalid arguments");
 
             if (ModelState.IsValid) {
-                repository.Save(new Article() { Id = Guid.NewGuid(), Description = args.Description, Link = args.Link, Name = args.Name, Tag = new Tag(args.Tag) });
+                repository.Save(new Article() { Id = Guid.NewGuid(),
+                                                Description = args.Description,
+                                                Link = args.Link,
+                                                Name = args.Name,
+                                                Tag = new Tag(args.Tag),
+                                                UserId = GetUserId() });
             }           
 
             var modelStateErrors = ModelState.Where(x => x.Value.Errors.Count > 0);
@@ -72,7 +74,7 @@ namespace KnowledgeBase.Controllers{
         }
 
         private ArticleListViewModel GetArticleListViewModel() {
-            IEnumerable<Article> collection = repository.Load();
+            IEnumerable<Article> collection = repository.Load(GetUserId());
             var articleListViewModel = new ArticleListViewModel();
 
             articleListViewModel.GroupedArticles = collection.GroupBy(x => x.Tag).ToDictionary(x => x.Key, y => y.AsEnumerable());

@@ -16,7 +16,7 @@ namespace KnowledgeBase.Data.Repository {
         public IEnumerable<T> Load() {
             string data = LoadData();
             var result = JsonParse(data);
-            return result;
+            return result.AsQueryable();
         }
 
         public Task Save(T article) {

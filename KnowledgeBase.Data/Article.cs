@@ -18,5 +18,6 @@ namespace KnowledgeBase.Data {
         public string Description { get; set; }
         public string Link { get; set; }
         public Tag Tag { get; set; }
+        public Guid UserId { get; set; }
     } //class
 }

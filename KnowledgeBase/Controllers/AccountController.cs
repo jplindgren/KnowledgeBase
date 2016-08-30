@@ -134,7 +134,7 @@ namespace KnowledgeBase.Controllers {
             //}, identity);
 
             var identity = new ClaimsIdentity(new[] {
-                new Claim(ClaimTypes.NameIdentifier, Guid.NewGuid().ToString()),
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Name, user.Name),
                 new Claim(ClaimTypes.Email, user.Email)
             },

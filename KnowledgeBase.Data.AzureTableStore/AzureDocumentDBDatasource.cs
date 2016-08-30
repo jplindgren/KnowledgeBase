@@ -21,7 +21,7 @@ namespace KnowledgeBase.Data.AzureTableStore{
                 throw new AzureDocumentDbConfigurationException(string.Format("Azure DocumentDb Configuration failed. 'PrimaryKey' property cannot be null. Check if the enviroment variable {0} is correctly set in your enviroment", Config.PRIMARYKEY_ENVIROMENTVARIABLE));
 
             this.client = new DocumentClient(new Uri(endpoint), key);
-
+                        
             this.dbname = dbName;
             this.collectionName = collectionName;
 
