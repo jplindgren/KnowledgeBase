@@ -7,22 +7,22 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace KnowledgeBase.Data.Repository {
-    public class JsonDataSource : IDatasource{
+    public class JsonDataSource<T> : IDatasource<T> where T : IEntity{
         public string datasourcePath { get; set; }
 
         public JsonDataSource(string datasourcePath) {
             this.datasourcePath = datasourcePath;
         }
-        public IEnumerable<Article> Load() {
+        public IEnumerable<T> Load() {
             string data = LoadData();
             var result = JsonParse(data);
-            return result;
+            return result.AsQueryable();
         }
 
-        public Task Save(Article article) {
+        public Task Save(T article) {
             string data = LoadData();
             var articles = JsonParse(data);
-            articles = articles.Concat(new Article[] { article });
+            articles = articles.Concat(new T[] { article });
 
             var articlesJson = JsonParse(articles);
             File.WriteAllText(datasourcePath, articlesJson, Encoding.UTF8);
@@ -46,12 +46,12 @@ namespace KnowledgeBase.Data.Repository {
             }
         }
 
-        private IEnumerable<Article> JsonParse(string data) {
-            var result = JsonConvert.DeserializeObject<List<Article>>(data);
+        private IEnumerable<T> JsonParse(string data) {
+            var result = JsonConvert.DeserializeObject<List<T>>(data);
             return result;
         }
 
-        private string JsonParse(IEnumerable<Article> articles) {
+        private string JsonParse(IEnumerable<T> articles) {
             var result = JsonConvert.SerializeObject(articles, Formatting.Indented);
             return result;
         }

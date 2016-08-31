@@ -10,7 +10,7 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace KnowledgeBase.Controllers{
-    public class OptionsController : Controller{
+    public class OptionsController : BaseController {
         KnowledgeRepository repository;
 
         public OptionsController(KnowledgeRepository repository) {
@@ -41,7 +41,7 @@ namespace KnowledgeBase.Controllers{
         // POST: /Options/Save
         [HttpPost]
         public FileResult Create() {
-            var data = repository.Load();
+            var data = repository.Load(GetUserId());
             var json = JsonConvert.SerializeObject(data);
             byte[] fileBytes = System.Text.Encoding.UTF8.GetBytes(json);
             string fileName = "bkp.json";

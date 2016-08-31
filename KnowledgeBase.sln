@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeBase", "KnowledgeBase\KnowledgeBase.csproj", "{24F95BA4-DC0F-4581-9CC2-BACBC130719E}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -13,6 +13,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowLedgeBase.Tests", "KnowLedgeBase.Tests\KnowLedgeBase.Tests.csproj", "{F0EAC2C6-32D6-4F70-A328-2E0DD0773DD1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnowledgeBase.Data.AzureTableStore", "KnowledgeBase.Data.AzureTableStore\KnowledgeBase.Data.AzureTableStore.csproj", "{D23D8911-523C-414B-BBE1-914DC84871E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyKnowledge.Authentication", "MyKnowledge.Authentication\MyKnowledge.Authentication.csproj", "{23E7AD5E-EF12-4F6B-B69E-F25753901D54}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +38,10 @@ Global
 		{D23D8911-523C-414B-BBE1-914DC84871E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D23D8911-523C-414B-BBE1-914DC84871E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D23D8911-523C-414B-BBE1-914DC84871E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23E7AD5E-EF12-4F6B-B69E-F25753901D54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23E7AD5E-EF12-4F6B-B69E-F25753901D54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23E7AD5E-EF12-4F6B-B69E-F25753901D54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23E7AD5E-EF12-4F6B-B69E-F25753901D54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

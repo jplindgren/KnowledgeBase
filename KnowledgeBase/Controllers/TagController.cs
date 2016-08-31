@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace KnowledgeBase.Controllers{
-    public class TagController : Controller{
+    public class TagController : BaseController{
         KnowledgeRepository repository;
         public TagController(KnowledgeRepository repository) {                        
             this.repository = repository;
@@ -17,7 +17,8 @@ namespace KnowledgeBase.Controllers{
         //
         // GET: /Tag/
         public JsonResult Index() {
-            IEnumerable<Article> collection = repository.Load();            
+            //TODO: Fix this in another branch
+            IEnumerable<Article> collection = repository.Load(GetUserId());
             return Json(collection.Select(x => x.Tag.Name).Distinct(), JsonRequestBehavior.AllowGet);
         }
 

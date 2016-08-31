@@ -37,18 +37,32 @@ namespace KnowledgeBase {
             //container.RegisterType<IDatasource, JsonDataSource>(
             //    new InjectionConstructor(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"App_Data\knowledge.json"))
             //);
-            
-            container.RegisterType<IDatasource, AzureDocumentDBDatasource>(
-                new InjectionFactory(x =>
-                    new AzureDocumentDBDatasource(
-                        Environment.GetEnvironmentVariable(AzureDocumentDBDatasource.ENDPOINT_ENVIROMENTVARIABLE, EnvironmentVariableTarget.User) ?? Environment.GetEnvironmentVariable(AzureDocumentDBDatasource.ENDPOINT_ENVIROMENTVARIABLE, EnvironmentVariableTarget.Machine) ?? Environment.GetEnvironmentVariable(AzureDocumentDBDatasource.ENDPOINT_ENVIROMENTVARIABLE),
-                        Environment.GetEnvironmentVariable(AzureDocumentDBDatasource.PRIMARYKEY_ENVIROMENTVARIABLE, EnvironmentVariableTarget.User) ?? Environment.GetEnvironmentVariable(AzureDocumentDBDatasource.PRIMARYKEY_ENVIROMENTVARIABLE, EnvironmentVariableTarget.Machine) ?? Environment.GetEnvironmentVariable(AzureDocumentDBDatasource.PRIMARYKEY_ENVIROMENTVARIABLE),
-                        "knowledge", "articles")
-                )
+
+            container.RegisterInstance<string>("AzureEndpoint", Environment.GetEnvironmentVariable(Config.ENDPOINT_ENVIROMENTVARIABLE, EnvironmentVariableTarget.User) ?? Environment.GetEnvironmentVariable(Config.ENDPOINT_ENVIROMENTVARIABLE, EnvironmentVariableTarget.Machine) ?? Environment.GetEnvironmentVariable(Config.ENDPOINT_ENVIROMENTVARIABLE));
+            container.RegisterInstance<string>("AzurePrimaryKey", Environment.GetEnvironmentVariable(Config.PRIMARYKEY_ENVIROMENTVARIABLE, EnvironmentVariableTarget.User) ?? Environment.GetEnvironmentVariable(Config.PRIMARYKEY_ENVIROMENTVARIABLE, EnvironmentVariableTarget.Machine) ?? Environment.GetEnvironmentVariable(Config.PRIMARYKEY_ENVIROMENTVARIABLE));
+
+            container.RegisterType(typeof(IDatasource<>),
+                       typeof(AzureDocumentDBDatasource<Article>), "KnowledgeDataSource",
+                       new InjectionConstructor(new ResolvedParameter<string>("AzureEndpoint"), 
+                       new ResolvedParameter<string>("AzurePrimaryKey"),
+                       "knowledge",
+                       "articles"                       
+            ));
+
+            container.RegisterType(typeof(IDatasource<>),
+                       typeof(AzureDocumentDBDatasource<CustomUser>), "UserDataSource",
+                       new InjectionConstructor(new ResolvedParameter<string>("AzureEndpoint"),
+                       new ResolvedParameter<string>("AzurePrimaryKey"),
+                       "knowledge",
+                       "users"
+            ));           
+
+            container.RegisterType<KnowledgeRepository>(                
+                new InjectionConstructor(container.Resolve<IDatasource<Article>>("KnowledgeDataSource"))
             );
 
-            container.RegisterType<KnowledgeRepository>(
-                new InjectionConstructor(container.Resolve<IDatasource>())
+            container.RegisterType<UserService>(
+                new InjectionConstructor(container.Resolve<IDatasource<CustomUser>>("UserDataSource"))
             );
 
             DependencyResolver.SetResolver(new UnityResolver(container));            
