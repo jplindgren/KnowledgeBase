@@ -5,34 +5,39 @@ namespace KnowledgeBase {
     public class BundleConfig {
         // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725
         public static void RegisterBundles(BundleCollection bundles) {
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
-                        "~/Scripts/jquery-ui-{version}.js"));
+            bundles.UseCdn = true; 
+            
+            var jqueryCdnPath = "//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js";
+            bundles.Add(new ScriptBundle("~/bundles/jquery", jqueryCdnPath).Include("~/Scripts/vendor/jquery-{version}.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.unobtrusive*",
-                        "~/Scripts/jquery.validate*"));
+            //bundles.Add(new ScriptBundle("~/bundles/jquery").Include("~/Scripts/vendor/zepto.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/javascript").Include(
+                        "~/Scripts/vendor/bootstrap.js",
+                        "~/Scripts/vendor/radio.min.js",
+                        "~/Scripts/vendor/jquery.bootstrap-autohidingnavbar.js",
+                        "~/Scripts/vendor/shortcut.js",
+                        "~/Scripts/vendor/toastr.js",
+                        "~/Scripts/main.js",
+                        "~/Scripts/app/serializeObject.js",
+                        "~/Scripts/app/myShortcuts.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/javascript/app").Include(
+                        "~/Scripts/app/application.js",
+                        "~/Scripts/app/article-list.js",
+                        "~/Scripts/app/search-input.js",
+                        "~/Scripts/app/tag-menu.js",
+                        "~/Scripts/app/create-article-popup.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
+                        "~/Scripts/vendor/modernizr-*"));
 
-            bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
-                        "~/Content/themes/base/jquery.ui.core.css",
-                        "~/Content/themes/base/jquery.ui.resizable.css",
-                        "~/Content/themes/base/jquery.ui.selectable.css",
-                        "~/Content/themes/base/jquery.ui.accordion.css",
-                        "~/Content/themes/base/jquery.ui.autocomplete.css",
-                        "~/Content/themes/base/jquery.ui.button.css",
-                        "~/Content/themes/base/jquery.ui.dialog.css",
-                        "~/Content/themes/base/jquery.ui.slider.css",
-                        "~/Content/themes/base/jquery.ui.tabs.css",
-                        "~/Content/themes/base/jquery.ui.datepicker.css",
-                        "~/Content/themes/base/jquery.ui.progressbar.css",
-                        "~/Content/themes/base/jquery.ui.theme.css"));
+            bundles.Add(new StyleBundle("~/bundles/css").Include("~/Content/css/*.css", new CssRewriteUrlTransform()));
+
+            BundleTable.EnableOptimizations = true;
         }
-    }
+    } //class
 }

@@ -11,12 +11,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
-        <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />        
-        <link href="~/Content/css/bootstrap-theme.min.css" rel="stylesheet" />
-        <link href="~/Content/css/main.css" rel="stylesheet" />
-        <link href="~/Content/css/toastr.css" rel="stylesheet" />
 
-        <script src="~/Scripts/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        @Styles.Render("~/bundles/css")
+
+        @Scripts.Render("~/bundles/modernizr")
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -137,23 +135,10 @@
     <div class="container">
       @RenderBody()
     </div> <!-- /container -->
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="~/Scripts/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-        <script src="~/Scripts/vendor/bootstrap.min.js"></script>
-        <script src="~/Scripts/vendor/radio.min.js"></script>
-        <script src="~/Scripts/vendor/jquery.bootstrap-autohidingnavbar.js"></script>
-        <script src="~/Scripts/vendor/shortcut.js"></script>
-        <script src="~/Scripts/vendor/toastr.min.js"></script>
-
-        <script src="~/Scripts/main.js"></script>
-        <script src="~/Scripts/app/serializeObject.js"></script>
-        <script src="~/Scripts/app/myShortcuts.js"></script>
-
-        <script src="~/Scripts/app/application.js"></script>
-        <script src="~/Scripts/app/article-list.js"></script>
-        <script src="~/Scripts/app/search-input.js"></script>
-        <script src="~/Scripts/app/tag-menu.js"></script>
-        <script src="~/Scripts/app/create-article-popup.js"></script>
+        
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/javascript")
+        @Scripts.Render("~/bundles/javascript/app")
 
         @RenderSection("pagescripts", false)
         <script>
