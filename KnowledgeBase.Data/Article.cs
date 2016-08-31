@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,11 +14,18 @@ namespace KnowledgeBase.Data {
             this.Link = link;
             this.Tag = new Tag(tag);    
         }
+
+        [JsonProperty("id")]
         public Guid Id { get; set; }
+        [JsonProperty("name")]
         public string Name { get; set; }
+        [JsonProperty("description")]
         public string Description { get; set; }
+        [JsonProperty("link")]
         public string Link { get; set; }
+        [JsonProperty("tag")]
         public Tag Tag { get; set; }
+        [JsonProperty("userId")]
         public Guid UserId { get; set; }
     } //class
 }

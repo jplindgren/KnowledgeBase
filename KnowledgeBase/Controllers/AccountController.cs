@@ -116,29 +116,12 @@ namespace KnowledgeBase.Controllers {
 
 
         public void IdentitySignin(CustomUser user, string providerKey = null, bool isPersistent = false) {
-            //var claims = new List<Claim>();
-
-            //// create required claims
-            //claims.Add(new Claim(ClaimTypes.NameIdentifier, appUserState.UserId));
-            //claims.Add(new Claim(ClaimTypes.Name, appUserState.Name));
-
-            //// custom – my serialized AppUserState object
-            //claims.Add(new Claim("userState", appUserState.ToString()));
-
-            //var identity = new ClaimsIdentity(claims, DefaultAuthenticationTypes.ExternalCookie);
-
-            //AuthenticationManager.SignIn(new AuthenticationProperties() {
-            //    AllowRefresh = true,
-            //    IsPersistent = isPersistent,
-            //    ExpiresUtc = DateTime.UtcNow.AddDays(7)
-            //}, identity);
-
             var identity = new ClaimsIdentity(new[] {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                 new Claim(ClaimTypes.Name, user.Name),
                 new Claim(ClaimTypes.Email, user.Email)
             },
-            "ApplicationCookie");
+            DefaultAuthenticationTypes.ApplicationCookie);
 
             var ctx = Request.GetOwinContext();
             var authManager = ctx.Authentication;
