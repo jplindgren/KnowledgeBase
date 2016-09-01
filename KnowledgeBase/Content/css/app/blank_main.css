@@ -67,3 +67,9 @@ body.blank {
     margin-left: 20px;
     height: 22px;
 }
+
+.register-container {
+    max-width: 720px;
+    margin: auto;
+    padding-top: 6%;
+}

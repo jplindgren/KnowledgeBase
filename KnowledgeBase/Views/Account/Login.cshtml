@@ -16,10 +16,12 @@
                 <div class="panel-body">
                     @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { id = "loginForm", role = "form" })) {
                         @Html.AntiForgeryToken()
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
                         <div class="form-group">
                             @Html.LabelFor(m => m.Email, new { @class = "control-label" })
                             @Html.TextBoxFor(m => m.Email, new { @class = "form-control input-lg", title = "Please enter your email", required = "", placeholder = "example@gmail.com",
-                                                                 tabindex = "1", autocorrect = "off", spellcheck = "false", autocapitalize = "off", autofocus = "autofocus" })                                                        
+                                                                tabindex = "1", autocorrect = "off", spellcheck = "false", autocapitalize = "off", autofocus = "autofocus",
+                                                                })                                                        
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(m => m.Password, new { @class = "control-label" })
