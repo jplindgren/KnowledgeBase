@@ -1,15 +1,30 @@
 ﻿@using Microsoft.AspNet.Identity
-@if (Request.IsAuthenticated) {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" })) {
-        @Html.AntiForgeryToken()
+@if (Request.IsAuthenticated) {      
+    <button type="button" id="userMenu" class="btn btn-default" data-toggle="dropdown" role="combobox" aria-haspopup="true" aria-expanded="false" data-target="#">
+        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+        <span class="caret"></span>
+    </button>
 
-        <ul class="nav navbar-nav navbar-right">
-            <li>
-                @Html.ActionLink("Hi " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-            </li>
-            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-        </ul>
-    }
+    <ul class="dropdown-menu knowledge_nav_menu" aria-labelledby="userMenu" role="menu">
+        <li>            
+            @Html.ActionLink(User.Identity.GetUserName(), "Account", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+        </li>
+        <li role="separator" class="divider"></li>
+        <li>
+            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
+                @Html.AntiForgeryToken()
+                <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+            }
+        </li>
+    </ul>
+
+    @*<ul class="nav navbar-nav navbar-right">
+        <li>
+            @Html.ActionLink("Hi " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+        </li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+    </ul>*@
+
 } else {
     <ul class="nav navbar-nav navbar-right">
         <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>

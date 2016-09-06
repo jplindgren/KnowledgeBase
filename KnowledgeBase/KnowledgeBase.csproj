@@ -471,11 +471,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Content\css\app\blank_main.css" />
     <Content Include="Content\css\bootstrap-theme.css" />
     <Content Include="Content\css\bootstrap-theme.min.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
-    <Content Include="Content\css\main.css" />
+    <Content Include="Content\css\app\main.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\css\toastr.css" />
     <Content Include="Content\css\toastr.min.css" />
@@ -495,6 +496,7 @@
     <Content Include="Scripts\app\serializeObject.js" />
     <Content Include="Scripts\app\tag-menu.js" />
     <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\vendor\jquery-1.11.2.js" />
     <Content Include="Scripts\vendor\radio.min.js" />
     <Content Include="Scripts\vendor\toastr.js" />
     <Content Include="Scripts\vendor\toastr.min.js" />
@@ -577,8 +579,12 @@
     <None Include="Properties\PublishProfiles\mycontent.pubxml" />
     <None Include="Properties\PublishProfiles\MyKnowledge - Web Deploy.pubxml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_Layout_Blank.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

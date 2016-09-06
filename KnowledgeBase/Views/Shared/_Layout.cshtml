@@ -6,13 +6,17 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Knowledge base</title>
+        <title>MyKnowledge</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
         @Styles.Render("~/bundles/css")
+        @Styles.Render("~/bundles/css/main")
+
+        <!-- Add local styles, mostly for plugins css file -->
+        @if (IsSectionDefined("Styles")) {@RenderSection("Styles", required: false)}
 
         @Scripts.Render("~/bundles/modernizr")
     </head>
@@ -54,7 +58,7 @@
                         <button id="openAddArticlePopup" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                         </button>
-                        <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
+                        <ul class="dropdown-menu knowledge_nav_menu">
                             <li>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -69,7 +73,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label class="sr-only" for="link">Link</label>
-                                                <input type="text" class="form-control has-error" id="link" name="link" placeholder="Link" required>
+                                                <input type="url" class="form-control has-error" id="link" name="link" placeholder="Link" required pattern="https?://.+">
                                             </div>
                                                 <div class="form-group">
                                                 <label class="sr-only" for="description">Description</label>
@@ -86,9 +90,12 @@
                         <button type="button" id="optionsMenu1" class="btn btn-info" data-toggle="modal" data-target="#myModal">
                             <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
                         </button>
+                        
                     </li>
-                }
-                <li>@Html.Partial("_LoginPartial")</li>
+                }                
+                <li class="dropdown">                    
+                    @Html.Partial("_LoginPartial")
+                </li>
             </ul>
         </div><!--/.navbar-collapse -->
       </div>
