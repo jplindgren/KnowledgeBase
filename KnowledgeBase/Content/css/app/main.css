@@ -43,6 +43,32 @@ body {
 
 #add-articleForm input { margin-bottom: 15px; }
 
+.knowledge_nav_menu {
+    padding: 15px;
+    min-width: 250px;
+}
+
+.knowledge_nav_menu a {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+}
+
+.knowledge_nav_menu a:hover, .knowledge_nav_menu a:focus {
+    color: #262626;
+    text-decoration: none;
+    background-color: #f5f5f5;
+}
+
+#userMenu {
+    padding-left: 10px;
+    margin-left: 4px;    
+}
+
 
 
 

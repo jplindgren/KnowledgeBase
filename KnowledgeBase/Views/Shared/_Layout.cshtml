@@ -58,7 +58,7 @@
                         <button id="openAddArticlePopup" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                         </button>
-                        <ul class="dropdown-menu" style="padding: 15px;min-width: 250px;">
+                        <ul class="dropdown-menu knowledge_nav_menu">
                             <li>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -90,9 +90,12 @@
                         <button type="button" id="optionsMenu1" class="btn btn-info" data-toggle="modal" data-target="#myModal">
                             <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
                         </button>
+                        
                     </li>
-                }
-                <li>@Html.Partial("_LoginPartial")</li>
+                }                
+                <li class="dropdown">                    
+                    @Html.Partial("_LoginPartial")
+                </li>
             </ul>
         </div><!--/.navbar-collapse -->
       </div>

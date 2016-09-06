@@ -579,8 +579,6 @@
     <None Include="Properties\PublishProfiles\mycontent.pubxml" />
     <None Include="Properties\PublishProfiles\MyKnowledge - Web Deploy.pubxml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Account\LoginOld.cshtml" />
-    <Content Include="Views\Account\RegisterOld.cshtml" />
     <Content Include="Views\Shared\_Layout_Blank.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
