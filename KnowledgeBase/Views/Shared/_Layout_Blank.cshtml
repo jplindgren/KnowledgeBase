@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>MyKnowledge | @ViewBag.Title</title>
+
+    @*<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>*@
+
+    @Styles.Render("~/bundles/css")
+    @Styles.Render("~/bundles/css/blank_main")    
+ 
+    <!-- Add local styles, mostly for plugins css file -->
+    @if (IsSectionDefined("Styles")) {@RenderSection("Styles", required: false)}
+</head>
+<body class="blank">
+    <!--[if lt IE 7]>
+    <p class="alert alert-danger">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->    
+
+    <div class="back-link hidden-xs">
+        <a href="@Url.Action("Index", "Knowledge")" class="btn btn-primary btn-md">Back</a>
+    </div>
+
+    <!-- Main view  -->
+    @RenderBody()
+
+    <!-- Handler for local scripts -->
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -38,17 +38,17 @@
     Application.ArticleList.prototype.filter = function filter(content) {
         if (!event.target.value) {
             $('.article').each(function (index) {
-                $(this.closest('div')).show();
+                $(this).closest('div').show();
             });
         } else {
             var filteredArticles = $('.article[data-name*="' + event.target.value.toLowerCase() + '"]');
             var notFilteredArticles = $('.article:not([data-name*="' + event.target.value.toLowerCase() + '"])');
 
             $(filteredArticles).each(function (index) {
-                $(this.closest('div')).show();
+                $(this).closest('div').show();
             });
             $(notFilteredArticles).each(function (index) {
-                $(this.closest('div')).hide();
+                $(this).closest('div').hide();
             });
         }
     }
