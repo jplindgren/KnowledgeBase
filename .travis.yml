@@ -14,3 +14,6 @@ deploy:
   verbose: true
   on:
     all_branches: true
+notifications:
+  email:
+    - EMAIL_OWNER
