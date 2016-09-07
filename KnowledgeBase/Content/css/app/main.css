@@ -37,6 +37,10 @@ body {
     box-shadow: 2px 1px 5px 1px #ccc;
 }
 
+.article > h4{
+    font-weight: 600;
+}
+
 .pill-item {
     padding: 5px;
 }
@@ -69,19 +73,14 @@ body {
     margin-left: 4px;    
 }
 
+.content {
+	/*width: 400px;
+	background-color: #f0f0f0;
+	margin: 10px;*/
+}
 
+.article-card {
 
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 

@@ -21,3 +21,26 @@
 <footer>
     <p>&copy; Jplindgren 2015</p>
 </footer>
+
+@section pagescripts{
+    <script>
+        $(document).ready(function () {
+            $('.content').readmore({
+                speed: 100,
+                collapsedHeight: 50,
+                heightMargin: 30,
+                lessLink: '<a href="#">less</a>',
+                moreLink: '<a href="#">more</a>'
+            });
+
+            var items = $('.article-container');
+            items.each(function (index, item) {
+                $(item).masonry({
+                    // options
+                    itemSelector: '.article-card'
+                });
+            });
+            
+        });
+    </script>    
+}
