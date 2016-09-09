@@ -497,7 +497,10 @@
     <Content Include="Scripts\app\tag-menu.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\vendor\jquery-1.11.2.js" />
+    <Content Include="Scripts\vendor\masonry.pkgd.js" />
     <Content Include="Scripts\vendor\radio.min.js" />
+    <Content Include="Scripts\vendor\readmore.js" />
+    <Content Include="Scripts\vendor\readmore.min.js" />
     <Content Include="Scripts\vendor\toastr.js" />
     <Content Include="Scripts\vendor\toastr.min.js" />
     <Content Include="Scripts\vendor\bootstrap.js" />
@@ -521,14 +524,12 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_UserSettings.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\" />
-    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -582,6 +583,8 @@
     <Content Include="Views\Shared\_Layout_Blank.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Scripts\vendor\masonry.pkgd.min.js" />
+    <None Include="Properties\PublishProfiles\MyKnowledgeEast - Web Deploy.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

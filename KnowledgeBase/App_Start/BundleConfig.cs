@@ -11,8 +11,10 @@ namespace KnowledgeBase {
             var jqueryCdnPath = "//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js";
             bundles.Add(new ScriptBundle("~/bundles/jquery", jqueryCdnPath).Include("~/Scripts/vendor/jquery-{version}.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/javascript").Include(
+            bundles.Add(new ScriptBundle("~/bundles/javascript").Include(                        
+                        "~/Scripts/vendor/readmore.js",
                         "~/Scripts/vendor/bootstrap.js",
+                        "~/Scripts/vendor/masonry.pkgd.js",
                         "~/Scripts/vendor/radio.min.js",
                         "~/Scripts/vendor/jquery.bootstrap-autohidingnavbar.js",
                         "~/Scripts/vendor/shortcut.js",
