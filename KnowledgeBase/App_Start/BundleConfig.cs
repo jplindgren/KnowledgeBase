@@ -9,9 +9,12 @@ namespace KnowledgeBase {
             bundles.UseCdn = true; 
             
             var jqueryCdnPath = "//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js";
+            var cacheKey = "d9b3dfd57f8c40c9-b3b294615be571d4";
+            var myKnowledgeCdn = "http://myknowledge.azureedge.net/{0}?" + cacheKey;
+
             bundles.Add(new ScriptBundle("~/bundles/jquery", jqueryCdnPath).Include("~/Scripts/vendor/jquery-{version}.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/javascript").Include(
+            bundles.Add(new ScriptBundle("~/bundles/javascript", string.Format(myKnowledgeCdn, "bundles/javascript")).Include(
                         "~/Scripts/vendor/bootstrap.js",
                         "~/Scripts/vendor/radio.min.js",
                         "~/Scripts/vendor/jquery.bootstrap-autohidingnavbar.js",
@@ -19,7 +22,7 @@ namespace KnowledgeBase {
                         "~/Scripts/vendor/toastr.js",
                         "~/Scripts/app/serializeObject.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/javascript/app").Include(
+            bundles.Add(new ScriptBundle("~/bundles/javascript/app", string.Format(myKnowledgeCdn, "bundles/javascript/app")).Include(
                         "~/Scripts/main.js",
                         "~/Scripts/app/application.js",
                         "~/Scripts/app/myShortcuts.js",
@@ -33,12 +36,12 @@ namespace KnowledgeBase {
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/vendor/modernizr-*"));
 
-            bundles.Add(new StyleBundle("~/bundles/css").Include("~/Content/css/*.css", new CssRewriteUrlTransform()));
-            bundles.Add(new StyleBundle("~/bundles/css/main").Include("~/Content/css/app/main.css"));
+            bundles.Add(new StyleBundle("~/bundles/css", string.Format(myKnowledgeCdn, "bundles/css")).Include("~/Content/css/*.css", new CssRewriteUrlTransform()));
+            bundles.Add(new StyleBundle("~/bundles/css/main", string.Format(myKnowledgeCdn, "bundles/css/main")).Include("~/Content/css/app/main.css"));
             bundles.Add(new StyleBundle("~/bundles/css/blank_main").Include("~/Content/css/app/blank_main.css"));
 
 
-            //BundleTable.EnableOptimizations = true;
+            BundleTable.EnableOptimizations = true;
         }
     } //class
 }
