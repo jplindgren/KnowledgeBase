@@ -33,13 +33,14 @@
                 moreLink: '<a href="#">more</a>'
             });
 
-            var items = $('.article-container');
+            var items = $('.article-container');            
             items.each(function (index, item) {
                 $(item).masonry({
                     // options
-                    itemSelector: '.article-card'
-                });
-            });
+                    itemSelector: '.article-card',
+                    percentPosition: true
+                });                
+            });            
             
         });
     </script>    

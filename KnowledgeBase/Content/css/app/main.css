@@ -48,8 +48,7 @@ body {
 #add-articleForm input { margin-bottom: 15px; }
 
 .knowledge_nav_menu {
-    padding: 15px;
-    min-width: 250px;
+    padding: 15px;    
 }
 
 .knowledge_nav_menu a {
@@ -59,7 +58,7 @@ body {
     font-weight: normal;
     line-height: 1.42857143;
     color: #333;
-    white-space: nowrap;
+    white-space: nowrap;    
 }
 
 .knowledge_nav_menu a:hover, .knowledge_nav_menu a:focus {
@@ -73,14 +72,16 @@ body {
     margin-left: 4px;    
 }
 
-.content {
-	/*width: 400px;
-	background-color: #f0f0f0;
-	margin: 10px;*/
-}
-
 .article-card {
-
+    word-wrap:break-word;    
 }
+
+@media only screen and (max-width: 500px) {
+    .article-card {
+        width: 100%;
+    }
+}
+
+
 
 
