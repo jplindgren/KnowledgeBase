@@ -8,7 +8,7 @@ using Microsoft.Azure.Documents.Client;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
 
-namespace KnowledgeBase.Data.AzureTableStore{
+namespace KnowledgeBase.Data.DocumentDB{
     public class AzureDocumentDBDatasource<T> : IDatasource<T> where T : IEntity {
         private DocumentClient client;
         private string collectionName;

@@ -48,7 +48,8 @@ body {
 #add-articleForm input { margin-bottom: 15px; }
 
 .knowledge_nav_menu {
-    padding: 15px;    
+    padding: 15px;
+    min-width: 250px;  
 }
 
 .knowledge_nav_menu a {

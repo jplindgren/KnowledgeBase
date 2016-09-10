@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace KnowledgeBase.Data.AzureTableStore {
+namespace KnowledgeBase.Data.DocumentDB {
     public class AsyncHelpers {
         /// <summary>
 		///     Execute's an async Task<T> method which has a void return value synchronously
