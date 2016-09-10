@@ -23,16 +23,22 @@
             <a href="#" role="button" id="@item.Key.Name" class="openAllLinks">@item.Key.Name &raquo;</a>
         </h2> 
         
-    
-        <div class="row">
-            @foreach (var article in item.Value) { 
-                <div class="col-md-4">
+        @{
+            int zIndexCounter = 10;
+        }
+        <div class="row article-container">
+            @foreach (var article in item.Value) {
+                {
+                    zIndexCounter++;
+                }
+
+                <div class="col-md-4 article-card" style="z-index:@zIndexCounter" >
                     <div data-name="@article.Name.ToLower()" class="article well">
                         <a class="pull-right" href="@Url.Action("remove", "knowledge")?id=@Html.Encode(@article.Id)" role="button">
                             <span class="glyphicon glyphicon-remove" aria-hidden="true" />
-                        </a>
-                        <h3>@article.Name</h3>
-                        <small>@article.Description</small>
+                        </a>                        
+                        <h4>@article.Name</h4>
+                        <small class="content hidden-xs">@article.Description</small>
                         <p><a target="_blank" class="btn btn-default" href="@article.Link" role="button">Open &raquo;</a></p>
                         <span class="label label-primary pull-right">@item.Key.Name</span>
                         <input type="hidden" value=">@article.Id" />
