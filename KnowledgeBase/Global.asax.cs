@@ -1,5 +1,5 @@
 ﻿using KnowledgeBase.Data;
-using KnowledgeBase.Data.AzureTableStore;
+using KnowledgeBase.Data.DocumentDB;
 using KnowledgeBase.Data.Repository;
 using Microsoft.Practices.Unity;
 using System;

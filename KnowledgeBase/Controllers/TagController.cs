@@ -16,10 +16,9 @@ namespace KnowledgeBase.Controllers{
 
         //
         // GET: /Tag/
-        public JsonResult Index() {
-            //TODO: Fix this in another branch
-            IEnumerable<Article> collection = repository.Load(GetUserId());
-            return Json(collection.Select(x => x.Tag.Name).Distinct(), JsonRequestBehavior.AllowGet);
+        public JsonResult Index() {            
+            IEnumerable<Tag> tags = repository.LoadTags(GetUserId());
+            return Json(tags.Select(x => x.Name).ToList(), JsonRequestBehavior.AllowGet);
         }
 
     } //class

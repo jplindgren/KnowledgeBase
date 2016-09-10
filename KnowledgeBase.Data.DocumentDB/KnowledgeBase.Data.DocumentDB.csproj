@@ -7,8 +7,8 @@
     <ProjectGuid>{D23D8911-523C-414B-BBE1-914DC84871E3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KnowledgeBase.Data.AzureTableStore</RootNamespace>
-    <AssemblyName>KnowledgeBase.Data.AzureTableStore</AssemblyName>
+    <RootNamespace>KnowledgeBase.Data.DocumentDB</RootNamespace>
+    <AssemblyName>KnowledgeBase.Data.DocumentDB</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>

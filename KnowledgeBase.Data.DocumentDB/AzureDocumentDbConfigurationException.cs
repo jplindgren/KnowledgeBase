@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace KnowledgeBase.Data.AzureTableStore {
+namespace KnowledgeBase.Data.DocumentDB {
     [Serializable]
     internal class AzureDocumentDbConfigurationException : Exception {
         public AzureDocumentDbConfigurationException() {

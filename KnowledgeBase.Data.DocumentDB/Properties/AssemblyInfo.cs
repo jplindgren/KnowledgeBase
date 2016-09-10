@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("KnowledgeBase.Data.AzureTableStore")]
+[assembly: AssemblyTitle("KnowledgeBase.Data.DocumentDB")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("KnowledgeBase.Data.AzureTableStore")]
+[assembly: AssemblyProduct("KnowledgeBase.Data.DocumentDB")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

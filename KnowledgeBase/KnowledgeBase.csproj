@@ -537,9 +537,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\KnowledgeBase.Data.AzureTableStore\KnowledgeBase.Data.AzureTableStore.csproj">
-      <Project>{d23d8911-523c-414b-bbe1-914dc84871e3}</Project>
-      <Name>KnowledgeBase.Data.AzureTableStore</Name>
+    <ProjectReference Include="..\KnowledgeBase.Data.DocumentDB\KnowledgeBase.Data.DocumentDB.csproj">
+      <Project>{D23D8911-523C-414B-BBE1-914DC84871E3}</Project>
+      <Name>KnowledgeBase.Data.DocumentDB</Name>
     </ProjectReference>
     <ProjectReference Include="..\KnowledgeBase.Data\KnowledgeBase.Data.csproj">
       <Project>{4530cf7b-7b4a-456d-81bc-96f6c2d7aa08}</Project>
