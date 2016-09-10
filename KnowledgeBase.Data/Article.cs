@@ -12,7 +12,8 @@ namespace KnowledgeBase.Data {
             this.Name = name;
             this.Description = description;
             this.Link = link;
-            this.Tag = new Tag(tag);    
+            this.Tag = new Tag(tag);
+            this.CreatedAt = new DateTime(); 
         }
 
         [JsonProperty("id")]
@@ -25,7 +26,11 @@ namespace KnowledgeBase.Data {
         public string Link { get; set; }
         [JsonProperty("tag")]
         public Tag Tag { get; set; }
+
         [JsonProperty("userId")]
         public Guid UserId { get; set; }
+
+        [JsonProperty("created_at")]
+        public DateTime CreatedAt { get; set; }
     } //class
 }

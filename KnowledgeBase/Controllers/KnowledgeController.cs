@@ -49,7 +49,8 @@ namespace KnowledgeBase.Controllers{
                                                 Link = args.Link,
                                                 Name = args.Name,
                                                 Tag = new Tag(args.Tag),
-                                                UserId = GetUserId() });
+                                                UserId = GetUserId(),
+                                                CreatedAt = DateTime.Now });
             }           
 
             var modelStateErrors = ModelState.Where(x => x.Value.Errors.Count > 0);
