@@ -204,3 +204,7 @@ ChromeExtension/src/npm-debug
 ChromeExtension/*.pem
 
 KnowledgeBase/Web.Release.config
+
+# Folder view configuration files
+.DS_Store
+Desktop.ini

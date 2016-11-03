@@ -4,4 +4,4 @@
 
 To use AzureDocumentDB configure the endpoint and the key as enviroment variables MYCONTENT_DOCUMENTDB_ENDPOINT and MYCONTENT_DOCUMENTDB_KEY
 
-
+MAC
